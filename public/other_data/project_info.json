@@ -1,0 +1,28 @@
+[
+    {
+        "projectName": "Symbol Counter",
+        "affiliation": "Metrized Consulting Inc.",
+        "description": "Certainly! Here are the project details broken down into clear bullet points:\n- Developed a full-stack web application, integrating FastAPI for the backend and Next.js for the frontend.\n- Focused on a computer vision-driven machine learning model, testing and refining multiple model variants and training datasets over several months.\n- Enhanced application performance by identifying and implementing key features essential to the machine learning model.\n- Expanded web application functionalities including advanced state management and facilitating communications between multiple servers.\n- Handled deployment on AWS and integrated Supabase for user authentication, ensuring robust security measures.\n- Documented the entire project comprehensively, detailing development processes and operational guidelines.\n- Delivered two detailed presentations to train new team members, ensuring knowledge transfer and project continuity."
+    },      
+    {
+        "projectName": "Project One",
+        "affiliation": "University of British Columbia",
+        "description": "This is a description of the first project. and a very lengthy description dfghjkldsdf g hggdc haofihajkg sadf as fdiushadj hfgasd fhgj gfashd fjsagd fjsagd fjhgsd fjhsdaf hasdgf jhsagdf gasjfd gkjasdh gfjas fgjsagdf jhasdgf jhasdgf jhasgdfh gsafjk gsajdhf gjshag dfjhsgf jsdhgf jsagdf hsgdf jhasgd f"
+    },
+    {
+        "projectName": "Project One",
+        "affiliation": "University of British Columbia",
+        "description": "This is a description of the first project. and a very lengthy description dfghjkldsdf g hggdc haofihajkg sadf as fdiushadj hfgasd fhgj gfashd fjsagd fjsagd fjhgsd fjhsdaf hasdgf jhsagdf gasjfd gkjasdh gfjas fgjsagdf jhasdgf jhasdgf jhasgdfh gsafjk gsajdhf gjshag dfjhsgf jsdhgf jsagdf hsgdf jhasgd f"
+    },
+    {
+        "projectName": "Project One",
+        "affiliation": "University of British Columbia",
+        "description": "This is a description of the first project. and a very lengthy description dfghjkldsdf g hggdc haofihajkg sadf as fdiushadj hfgasd fhgj gfashd fjsagd fjsagd fjhgsd fjhsdaf hasdgf jhsagdf gasjfd gkjasdh gfjas fgjsagdf jhasdgf jhasdgf jhasgdfh gsafjk gsajdhf gjshag dfjhsgf jsdhgf jsagdf hsgdf jhasgd f"
+    },
+    {
+      "projectName": "Project Two",
+      "affiliation": "Some Company",
+      "description": "This is a description of the second project."
+    }
+  ]
+  
