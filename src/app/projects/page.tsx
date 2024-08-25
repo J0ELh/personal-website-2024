@@ -16,11 +16,11 @@ const ProjectsPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-200 p-8 text-">
+    <div className="min-h-screen bg-gray-100 p-8 text-">
       <h1 className="text-3xl font-bold mb-4 text-center text-black">My Projects</h1>
-      <div className="flex flex-wrap justify-center items-start">
+      <div className="flex flex-col justify-center items-center">
         {projects.map((project, index) => (
-          <Project key={index} {...project} />
+          <Project key={index} {...project}/>
         ))}
       </div>
     </div>

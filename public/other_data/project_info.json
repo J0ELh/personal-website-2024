@@ -2,27 +2,45 @@
     {
         "projectName": "Symbol Counter",
         "affiliation": "Metrized Consulting Inc.",
-        "description": "Certainly! Here are the project details broken down into clear bullet points:\n- Developed a full-stack web application, integrating FastAPI for the backend and Next.js for the frontend.\n- Focused on a computer vision-driven machine learning model, testing and refining multiple model variants and training datasets over several months.\n- Enhanced application performance by identifying and implementing key features essential to the machine learning model.\n- Expanded web application functionalities including advanced state management and facilitating communications between multiple servers.\n- Handled deployment on AWS and integrated Supabase for user authentication, ensuring robust security measures.\n- Documented the entire project comprehensively, detailing development processes and operational guidelines.\n- Delivered two detailed presentations to train new team members, ensuring knowledge transfer and project continuity."
+        "description": "I was the full-stack developer leading the creation of this symbol counting application. Key technologies for this application included a fastapi backend deployed through docker. A custom-trained object detection model. And finally, a Supabase authenticated NEXT.js frontend.",
+        "imagePaths": [
+            "./images/symbol-counter-app.PNG"
+        ],
+        "technologies": ["Python", "FastAPI", "NextJS", "React", "Supabase", "Yolo"]
+    },
+    {
+        "projectName": "Flowering Onset Detection: Traditional Learning vs. Deep Learning Performance in a Sparse Label Context",
+        "affiliation": "Systopia Laboratory",
+        "link": "https://s3.us-east-1.amazonaws.com/climate-change-ai/papers/neurips2023/40/paper.pdf",
+        "imagePaths": ["./images/research-paper.PNG"],
+        "description": "This conference paper aimed summarized our machine learning research results. The goal was to predict the beginning of Spring time using different types of data (e.g. sallelite, temperature, ground-type) to monitor climate change and to inform farmers on crop-yield predictions.",
+        "technologies": ["Python", "ScikitLearn"]
+
     },      
     {
-        "projectName": "Project One",
-        "affiliation": "University of British Columbia",
-        "description": "This is a description of the first project. and a very lengthy description dfghjkldsdf g hggdc haofihajkg sadf as fdiushadj hfgasd fhgj gfashd fjsagd fjsagd fjhgsd fjhsdaf hasdgf jhsagdf gasjfd gkjasdh gfjas fgjsagdf jhasdgf jhasdgf jhasgdfh gsafjk gsajdhf gjshag dfjhsgf jsdhgf jsagdf hsgdf jhasgd f"
+        "projectName": "Royalty of the Pitch",
+        "affiliation": "NWPlus Hackathon",
+        "link": "https://github.com/J0ELh/Royalty-of-the-Pitch",
+        "description": "I created this card-game for the 2024 nwPlus hackathon at UBC. The game is based on a fastapi backend with a React client. All player information was gained through a combination of kaggle datasets and webscraping. The goal of the game is to win all of your opponents cards by picking favourable statistics on your randomly dealt hand of cards. If your player's statistic is better for the given trait, you win your opponents top card.",
+        "imagePaths": [
+            "./images/royalty-of-the-pitch-example.PNG"
+        ],
+        "technologies": ["Python", "FastAPI", "React"] 
     },
     {
-        "projectName": "Project One",
+        "projectName": "Chore Tracker",
+        "link": "https://github.com/J0ELh/Personal-Chore-Tracker-Project",
         "affiliation": "University of British Columbia",
-        "description": "This is a description of the first project. and a very lengthy description dfghjkldsdf g hggdc haofihajkg sadf as fdiushadj hfgasd fhgj gfashd fjsagd fjsagd fjhgsd fjhsdaf hasdgf jhsagdf gasjfd gkjasdh gfjas fgjsagdf jhasdgf jhasdgf jhasgdfh gsafjk gsajdhf gjshag dfjhsgf jsdhgf jsagdf hsgdf jhasgd f"
+        "technologies": ["Java"],
+        "description": "I created a chore tracker application in Java. This project focused on test-driven development using best design principles. Given a house with multiple people living in it, the app allowed to track and distribute chores throughout the household. An algorithm ensured that people got a good balance of easy and hard tasks so that nobody would end up with too much work."
     },
     {
-        "projectName": "Project One",
+        "projectName": "2D Platformer",
         "affiliation": "University of British Columbia",
-        "description": "This is a description of the first project. and a very lengthy description dfghjkldsdf g hggdc haofihajkg sadf as fdiushadj hfgasd fhgj gfashd fjsagd fjsagd fjhgsd fjhsdaf hasdgf jhsagdf gasjfd gkjasdh gfjas fgjsagdf jhasdgf jhasdgf jhasgdfh gsafjk gsajdhf gjshag dfjhsgf jsdhgf jsagdf hsgdf jhasgd f"
-    },
-    {
-      "projectName": "Project Two",
-      "affiliation": "Some Company",
-      "description": "This is a description of the second project."
+        "link": "https://www.youtube.com/watch?v=EDGmATVzSjM",
+        "imagePaths":["./images/platformer.PNG"],
+        "technologies": ["Unity"],
+        "description": "Using the Unity game engine and C#, my friends and I created a platforming game inspired by super mario."
     }
   ]
   

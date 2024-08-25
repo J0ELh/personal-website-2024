@@ -31,3 +31,19 @@ body {
     text-wrap: balance;
   }
 }
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* This centers the images horizontally */
+  align-items: center; /* This centers the images vertically if needed */
+}
+
+.container {
+  margin: 1rem; /* or whatever suits your design */
+  padding: 1rem; /* or whatever suits your design */
+  background-color: white;
+  border-radius: 0.5rem; /* rounded corners */
+  width: 50vw; /* half of the viewport width */
+  min-width: 600px; /* adjust this value to be half of your screen width */
+}
