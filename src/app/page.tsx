@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Linkedin, Github, Mail, Phone, LucideMapPinHouse } from 'lucide-react';  // Adjust based on the actual export names if necessary
 import PageLink from '@/components/page_link';
@@ -9,11 +10,14 @@ const HomePage = () => {
             <div className="w-3/10 flex flex-col border-r-2 border-gray-400 pr-8"> {/* Added border and padding */}
                 <div className=''>
                   <div className='items-center text-center mb-3'>
+                  <div className="">
                     <img
                         src="/images/joel_pf_lower_res.jpg"
                         alt="Profile Photo"
-                        className="w-64 h-64 rounded-full mb-4"
+                        className="w-64 h-64 rounded-full mb-4 object-cover "  // Adjust the size as needed
                     />
+                    </div>
+
                     <h1 className="text-2xl font-bold mb-2">Joel Hempel</h1>
                   </div>
                   <div id="contact" className="contact-info mt-8">
@@ -59,11 +63,22 @@ const HomePage = () => {
                 </div>
                 
                 <nav className="flex justify-center items-center flex-col mt-10">
-                    <PageLink name={'Experience (Resume)'} redirect={'experience'}/>
+                    {/* Open Resume PDF in a new tab */}
+                    <div className='w-1/2  flex justify-center items-center text-lg m-2 p-3 bg-gray-300 rounded transition-colors duration-300 ease-in-out hover:bg-gray-400'>
+                        <a 
+                            href="/other_data/Joel_Hempel_Resume.pdf" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                        >
+                            Experience (Resume)
+                        </a>
+                    </div>
+                    
                     <PageLink name={'Projects'} redirect={'projects'}/>
+                    <PageLink name={'Recommendations and Awards'} redirect={'recommendations_awards'}/>
                     <PageLink name={'About Me'} redirect={'about'}/>
-                    <PageLink name={'Recommendations'} redirect={'recommendations'}/>
                 </nav>
+
             </div>
         </div>
     );

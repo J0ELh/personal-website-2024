@@ -9,3 +9,7 @@ export interface RecommendationFormat {
     affiliation: string;
   }
   
+export interface AwardFormat {
+  affiliation: string;
+  name: string;
+}

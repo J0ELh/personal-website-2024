@@ -1,16 +1,9 @@
 [
     {
-        "affiliation": "UBC Subbots (Software Sub-team)",
-        "imagePaths": [
-            "./images/triton.jpg"
-        ],
-        "link": "https://www.subbots.ca/#/"
-    },
-    {
         "affiliation": "Metrized Consulting Inc.",
         "imagePaths": [
             "./images/owen-recommendation.PNG"
         ]
     }
-  ]
+]
   
