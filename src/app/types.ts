@@ -4,3 +4,8 @@ export interface ProjectFormat {
     description: string;
   }
   
+
+export interface RecommendationFormat {
+    affiliation: string;
+  }
+  

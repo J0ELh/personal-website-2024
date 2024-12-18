@@ -1,5 +1,15 @@
 [
     {
+        "projectName": "Autonomous Unverwater Vehicle (AUV)",
+        "affiliation": "UBC Subbots (Software Sub-team)",
+        "description": "I was part of the UBC Subbots team and helped development of the submarine navigation (ROS2) and localization (IMU).",
+        "imagePaths": [
+            "./images/triton.jpg"
+        ],
+        "technologies": ["C", "Arduino", "IMU", "ROS2"],
+        "link": "https://www.subbots.ca/#/"
+    },
+    {
         "projectName": "Symbol Counter",
         "affiliation": "Metrized Consulting Inc.",
         "description": "I was the full-stack developer leading the creation of this symbol counting application. Key technologies for this application included a fastapi backend deployed through docker. A custom-trained object detection model. And finally, a Supabase authenticated NEXT.js frontend.",
@@ -9,7 +19,7 @@
         "technologies": ["Python", "FastAPI", "NextJS", "React", "Supabase", "Yolo"]
     },
     {
-        "projectName": "Flowering Onset Detection: Traditional Learning vs. Deep Learning Performance in a Sparse Label Context",
+        "projectName": "Neurips 2023 Conference Paper",
         "affiliation": "Systopia Laboratory",
         "link": "https://s3.us-east-1.amazonaws.com/climate-change-ai/papers/neurips2023/40/paper.pdf",
         "imagePaths": ["./images/research-paper.PNG"],

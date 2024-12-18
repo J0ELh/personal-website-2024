@@ -10,7 +10,7 @@ const HomePage = () => {
                 <div className=''>
                   <div className='items-center text-center mb-3'>
                     <img
-                        src=".\images\joel_pf.jpg"
+                        src="/images/joel_pf_lower_res.jpg"
                         alt="Profile Photo"
                         className="w-64 h-64 rounded-full mb-4"
                     />
@@ -62,6 +62,7 @@ const HomePage = () => {
                     <PageLink name={'Experience (Resume)'} redirect={'experience'}/>
                     <PageLink name={'Projects'} redirect={'projects'}/>
                     <PageLink name={'About Me'} redirect={'about'}/>
+                    <PageLink name={'Recommendations'} redirect={'recommendations'}/>
                 </nav>
             </div>
         </div>
