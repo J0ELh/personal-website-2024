@@ -21,9 +21,10 @@ const technologyIcons: Record<string, string> = {
   Supabase: './svgs/supabase.svg',
   Yolo: './svgs/yolo.svg',
   ScikitLearn: './svgs/scikit-learn.svg',
-  ROS2: './svgs/ros2.svg',
+  ROS2: './svgs/ros.svg',
   C: './svgs/c.svg',
   Arduino: './svgs/arduino.svg',
+  IMU: './svgs/imu.svg',
 };
 
 const Project: React.FC<ProjectProps> = ({
