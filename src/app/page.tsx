@@ -62,7 +62,7 @@ const HomePage = () => {
                     <h2 className='mt-3 mb-6 text-2xl text-blue-500 '>Hi there!</h2>
                     <h3 className='text-xl mb-6'>Welcome to my personal website 👋</h3>
                     <p>
-                        I'm currently in my final year at the University of British Columbia, where I'm studying Computer Science. Here you'll find a glimpse into my academic and project experiences, as well as my personal interests. Feel free to navigate through the sections below to learn more about my journey and the work I'm passionate about.
+                        I&#39;m currently in my final year at the University of British Columbia, where I&#39;m studying Computer Science. Here you&#39;ll find a glimpse into my academic and project experiences, as well as my personal interests. Feel free to navigate through the sections below to learn more about my journey and the work I&#39;m passionate about.
                     </p>
                 </div>
                 
