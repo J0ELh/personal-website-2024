@@ -2,6 +2,7 @@
 import React from 'react';
 import { Linkedin, Github, Mail, Phone, LucideMapPinHouse } from 'lucide-react';  // Adjust based on the actual export names if necessary
 import PageLink from '@/components/page_link';
+import Image from 'next/image';
 
 
 const HomePage = () => {
@@ -11,10 +12,13 @@ const HomePage = () => {
                 <div className=''>
                   <div className='items-center text-center mb-3'>
                   <div className="">
-                    <img
+                  <Image
                         src="/images/joel_pf_lower_res.jpg"
                         alt="Profile Photo"
-                        className="w-64 h-64 rounded-full mb-4 object-cover "  // Adjust the size as needed
+                        width={256} // Width in pixels (adjust as needed)
+                        height={256} // Height in pixels (adjust as needed)
+                        className="rounded-full mb-4 object-cover" // Tailwind classes for styling
+                        style={{ width: '16rem', height: '16rem' }} // Additional inline styling if needed
                     />
                     </div>
 
@@ -64,15 +68,16 @@ const HomePage = () => {
                 
                 <nav className="flex justify-center items-center flex-col mt-10">
                     {/* Open Resume PDF in a new tab */}
-                    <div className='w-1/2  flex justify-center items-center text-lg m-2 p-3 bg-gray-300 rounded transition-colors duration-300 ease-in-out hover:bg-gray-400'>
-                        <a 
+                    <a 
                             href="/other_data/Joel_Hempel_Resume.pdf" 
                             target="_blank" 
                             rel="noopener noreferrer" 
+                            className='w-1/2  flex justify-center items-center text-lg m-2 p-3 bg-gray-300 rounded transition-colors duration-300 ease-in-out hover:bg-gray-400'
                         >
+                        <div >
                             Experience (Resume)
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                     
                     <PageLink name={'Projects'} redirect={'projects'}/>
                     <PageLink name={'Recommendations and Awards'} redirect={'recommendations_awards'}/>

@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
+import Image from 'next/image';
+
 
 // Define a type for the component props
 type RecommendationProps = {
@@ -49,32 +51,43 @@ const Recommendation: React.FC<RecommendationProps> = ({
       </div>
       
       <div className="image-container">
-        {imagePaths.map((path, index) => (
-          <img 
-            key={index} 
-            src={path} 
-            alt={`Recommendation ${affiliation} Image ${index + 1}`} 
-            className="m-2 max-w-1/2 h-auto rounded border-black border-1 shadow-md cursor-pointer"
-            onClick={() => openImage(path)}
-          />
-        ))}
+          {imagePaths.map((path, index) => (
+              <Image 
+                  key={index} 
+                  src={path} 
+                  alt={`Recommendation ${affiliation} Image ${index + 1}`} 
+                  className="m-1"
+                  layout="responsive" 
+                  width={16} // Aspect ratio: 16:9 (adjust as needed)
+                  height={9}
+                  unoptimized 
+                  onClick={() => openImage(path)}
+              />
+          ))}
       </div>
+
 
       {selectedImage && (
         <div 
           id="overlay" 
-          className="fixed inset-0 bg-gray-900 bg-opacity-50 z-50 flex justify-center items-center"
+          className="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 flex justify-center items-center"
           onClick={handleOverlayClick}
         >
-          <img 
-            src={selectedImage}
-            style={{ padding: "5px", margin: '20px', maxWidth: '90%', maxHeight: '90%' }}
-            alt="Zoomed in" 
-            className="rounded rounded" 
-            onClick={(e) => e.stopPropagation()} 
-          />
+          <div className="relative w-full h-full max-w-4xl max-h-[90vh] flex justify-center items-center">
+            <Image 
+              src={selectedImage}
+              alt="Zoomed in" 
+              unoptimized
+              className="rounded"
+              layout="intrinsic"
+              width={1600} // Aspect ratio width
+              height={900} // Aspect ratio height
+              onClick={(e) => e.stopPropagation()} 
+            />
+          </div>
         </div>
       )}
+
 
 
     </div>

@@ -42,6 +42,7 @@
         "link": "https://github.com/J0ELh/Personal-Chore-Tracker-Project",
         "affiliation": "University of British Columbia",
         "technologies": ["Java"],
+        "imagePaths": ["./images/not-available.jpg"],
         "description": "I created a chore tracker application in Java. This project focused on test-driven development using best design principles. Given a house with multiple people living in it, the app allowed to track and distribute chores throughout the household. An algorithm ensured that people got a good balance of easy and hard tasks so that nobody would end up with too much work."
     },
     {
