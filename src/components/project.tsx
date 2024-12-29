@@ -14,19 +14,19 @@ type ProjectProps = {
 };
 
 const technologyIcons: Record<string, string> = {
-  Java: './svgs/java.svg',  // Path to the SVG for Java
-  Unity: './svgs/unity-69.svg',  // Path to the SVG for Unity
-  FastAPI: './svgs/fastapi-1.svg',
-  NextJS: './svgs/nextjs-2.svg',
-  Python: './svgs/python-5.svg',
-  React: './svgs/react-2.svg',
-  Supabase: './svgs/supabase.svg',
-  Yolo: './svgs/yolo.svg',
-  ScikitLearn: './svgs/scikit-learn.svg',
-  ROS2: './svgs/ros.svg',
-  C: './svgs/c.svg',
-  Arduino: './svgs/arduino.svg',
-  IMU: './svgs/imu.svg',
+  Java: '/svgs/java.svg',  // Path to the SVG for Java
+  Unity: '/svgs/unity-69.svg',  // Path to the SVG for Unity
+  FastAPI: '/svgs/fastapi-1.svg',
+  NextJS: '/svgs/nextjs-2.svg',
+  Python: '/svgs/python-5.svg',
+  React: '/svgs/react-2.svg',
+  Supabase: '/svgs/supabase.svg',
+  Yolo: '/svgs/yolo.svg',
+  ScikitLearn: '/svgs/scikit-learn.svg',
+  ROS2: '/svgs/ros.svg',
+  C: '/svgs/c.svg',
+  Arduino: '/svgs/arduino.svg',
+  IMU: '/svgs/imu.svg',
 };
 
 const Project: React.FC<ProjectProps> = ({

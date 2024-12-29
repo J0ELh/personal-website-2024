@@ -11,7 +11,7 @@ const AboutMePage = () => {
   useEffect(() => {
     // This is where you fetch your projects JSON
     // For now, we'll simulate this with static data
-    fetch('./other_data/project_info.json')  // Adjust path as necessary
+    fetch('/other_data/project_info.json')  // Adjust path as necessary
       .then(response => response.json())
       .then((data:ProjectFormat[]) => setProjects(data))
       .catch(error => console.error('Error loading the projects:', error));
