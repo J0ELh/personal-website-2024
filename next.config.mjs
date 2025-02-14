@@ -4,7 +4,7 @@ const nextConfig = {
     images: {
         unoptimized: true, // Disable image optimization
       },
-    basePath: '/personal-website-2024',
+    // basePath: '/personal-website-2024',
   };
   
   export default nextConfig;
