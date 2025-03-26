@@ -4,7 +4,10 @@
         "affiliation": "UBC Subbots (Software Sub-team)",
         "description": "I was part of the UBC Subbots team and helped development of the submarine navigation (ROS2) and localization (IMU).",
         "imagePaths": [
-            "/images/triton.jpg"
+            "/images/triton.jpg",
+            "/images/team_photo_2024.jpg",
+            "/images/steelhead_1.jpg",
+            "/images/IMG_2353.jpg"
         ],
         "technologies": ["C", "Arduino", "IMU", "ROS2"],
         "link": "https://www.subbots.ca/#/"
