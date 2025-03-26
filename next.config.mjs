@@ -1,11 +1,18 @@
-/** @type {import('next').NextConfig} */
+// next.config.mjs
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
-    output: 'export', // Enables static export
-    images: {
-        unoptimized: true, // Disable image optimization
-      },
-    // basePath: '/personal-website-2024',
-  };
+  output: 'export',
+  images: {
+    // For GH Pages, you often want no built-in Next image optimization
+    unoptimized: true,
+  },
+  // Ensure these match your GitHub repo name
+  basePath: isProd ? '/personal-website-2024' : '',
+  assetPrefix: isProd ? '/personal-website-2024/' : '',
   
-  export default nextConfig;
-  
+  // This can help with serving index.html in subfolders
+  trailingSlash: true,
+};
+
+export default nextConfig;
