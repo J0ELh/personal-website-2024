@@ -7,11 +7,13 @@ import HomeButton from '@/components/HomeButton';
 
 const AboutMePage = () => {
   const [projects, setProjects] = useState<ProjectFormat[]>([]);
+  const isProd = process.env.NODE_ENV === 'production';
+  const basePath = isProd ? '/personal-website-2024' : '';
 
   useEffect(() => {
     // This is where you fetch your projects JSON
     // For now, we'll simulate this with static data
-    fetch('/other_data/project_info.json')  // Adjust path as necessary
+    fetch(`${basePath}/other_data/project_info.json`)  // Adjust path as necessary
       .then(response => response.json())
       .then((data:ProjectFormat[]) => setProjects(data))
       .catch(error => console.error('Error loading the projects:', error));
