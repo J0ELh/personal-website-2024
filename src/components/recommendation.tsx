@@ -57,7 +57,7 @@ const Recommendation: React.FC<RecommendationProps> = ({
           {imagePaths.map((path, index) => (
               <Image 
                   key={index} 
-                  src={`${basePath}path`} 
+                  src={`${basePath}${path}`} 
                   alt={`Recommendation ${affiliation} Image ${index + 1}`} 
                   className="m-1"
                   layout="responsive" 
@@ -78,7 +78,7 @@ const Recommendation: React.FC<RecommendationProps> = ({
         >
           <div className="relative w-full h-full max-w-4xl max-h-[90vh] flex justify-center items-center">
             <Image 
-              src={`${basePath}selectedImage`}
+              src={`${basePath}${selectedImage}`}
               alt="Zoomed in" 
               unoptimized
               className="rounded"
