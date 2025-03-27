@@ -10,22 +10,24 @@ import Award from '@/components/award';
 const RecommendationsPage = () => {
   const [recommentations, setRecommendations] = useState<RecommendationFormat[]>([]);
   const [awards, setAwards] = useState<AwardFormat[]>([]);
+  const isProd = process.env.NODE_ENV === 'production';
+  const basePath = isProd ? '/personal-website-2024' : '';
 
   useEffect(() => {
     // This is where you fetch your projects JSON
     // For now, we'll simulate this with static data
-    fetch('/other_data/recommendations.json')  // Adjust path as necessary
+    fetch(`${basePath}/other_data/recommendations.json`)  // Adjust path as necessary
       .then(response => response.json())
       .then((data:RecommendationFormat[]) => setRecommendations(data))
       .catch(error => console.error('Error loading the recommendations:', error));
 
-    fetch('/other_data/awards.json')  // Adjust path as necessary
+    fetch(`${basePath}/other_data/awards.json`)  // Adjust path as necessary
       .then(response => response.json())
       .then((data:AwardFormat[]) => setAwards(data))
       .catch(error => console.error('Error loading the awards:', error));
 
 
-  }, []);
+  }, [basePath]);
 
   return (
     <div className="min-h-screen bg-gray-100 p-8 text-">

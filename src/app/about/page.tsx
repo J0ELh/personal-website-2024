@@ -17,7 +17,7 @@ const AboutMePage = () => {
       .then(response => response.json())
       .then((data:ProjectFormat[]) => setProjects(data))
       .catch(error => console.error('Error loading the projects:', error));
-  }, []);
+  }, [basePath]);
 
   return (
     <div className="min-h-screen bg-gray-100 p-8 text-">
