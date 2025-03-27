@@ -2,7 +2,7 @@
 git add .
 
 # Commit changes with a message
-git commit -m "improved about me page"
+git commit -m "Minor bug fixes and changes"
 
 # Push commits to the remote repository
 git push

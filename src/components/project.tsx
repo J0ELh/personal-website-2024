@@ -41,6 +41,9 @@ const Project: React.FC<ProjectProps> = ({
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+
+  const isProd = process.env.NODE_ENV === 'production';
+  const basePath = isProd ? '/personal-website-2024' : '';
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
   };
@@ -104,7 +107,7 @@ const Project: React.FC<ProjectProps> = ({
           {technologies.map((tech, index) => (
             <div key={index} className="relative h-6 w-6 m-1">
               <Image
-                src={technologyIcons[tech]}
+                src={`${basePath}${technologyIcons[tech]}`}
                 alt={`${tech} logo`}
                 layout="fill"
                 objectFit="contain"
@@ -127,7 +130,7 @@ const Project: React.FC<ProjectProps> = ({
           >
             
             <Image
-              src={imagePaths.at(currentIndex) as string}
+              src={`${basePath}${imagePaths.at(currentIndex) as string}`}
               alt={`Project ${projectName} Image`}
               layout="fill"
               objectFit="cover"
@@ -168,7 +171,7 @@ const Project: React.FC<ProjectProps> = ({
         >
           <div className="relative w-full h-full max-w-4xl max-h-[90vh] flex justify-center items-center">
             <Image
-              src={imagePaths[currentIndex]}
+              src={`${basePath}${imagePaths[currentIndex]}`}
               alt="Zoomed In"
               layout="intrinsic"
               width={1600}
