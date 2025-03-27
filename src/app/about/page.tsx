@@ -31,6 +31,9 @@ const AboutMePage = () => {
           ...post,
           date: formatDate(post.date)
         }));
+        processedData.sort((a, b) => (a.date > b.date ? -1 : a.date < b.date ? 1 : 0));
+
+
         setPosts(processedData);
       })
       .catch(error => console.error('Error loading the projects:', error));

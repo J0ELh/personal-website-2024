@@ -2,7 +2,7 @@
 git add .
 
 # Commit changes with a message
-git commit -m "Minor bug fixes and changes"
+git commit -m "ordered posts by time"
 
 # Push commits to the remote repository
 git push
