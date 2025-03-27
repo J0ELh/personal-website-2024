@@ -6,7 +6,7 @@ const nextConfig = {
     unoptimized: true,
   },
   basePath: isProd ? '/personal-website-2024' : '',
-  assetPrefix: isProd ? '/personal-website-2024' : '',
+  assetPrefix: isProd ? '/personal-website-2024' : '',  
   trailingSlash: true,
 };
 

@@ -2,7 +2,6 @@
   "name": "joel_website",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://J0ELh.github.io/personal-website-2024",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
