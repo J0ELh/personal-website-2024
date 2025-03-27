@@ -13,6 +13,7 @@ const ProjectsPage = () => {
   useEffect(() => {
     // This is where you fetch your projects JSON
     // For now, we'll simulate this with static data
+    console.log("fetching", `${basePath}/other_data/project_info.json`)
     fetch(`${basePath}/other_data/project_info.json`)  // Adjust path as necessary
       .then(response => response.json())
       .then((data:ProjectFormat[]) => setProjects(data))
