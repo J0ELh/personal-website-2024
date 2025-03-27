@@ -74,7 +74,7 @@ const HomePage = () => {
                 <nav className="flex justify-center items-center flex-col mt-10">
                     {/* Open Resume PDF in a new tab */}
                     <a 
-                            href="/other_data/Joel_Hempel_Resume.pdf" 
+                            href={`${basePath}/other_data/Joel_Hempel_Resume.pdf`}
                             target="_blank" 
                             rel="noopener noreferrer" 
                             className='w-1/2  flex justify-center items-center text-lg m-2 p-3 bg-gray-300 rounded transition-colors duration-300 ease-in-out hover:bg-gray-400'
