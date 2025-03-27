@@ -6,6 +6,10 @@ import Image from 'next/image';
 
 
 const HomePage = () => {
+    const isProd = process.env.NODE_ENV === 'production';
+    const basePath = isProd ? '/personal-website-2024' : '';
+
+
     return (
         <div className="min-h-screen bg-gray-200 p-8 flex text-black">
             <div className="w-3/10 flex flex-col border-r-2 border-gray-400 pr-8"> {/* Added border and padding */}
@@ -13,7 +17,7 @@ const HomePage = () => {
                   <div className='items-center text-center mb-3'>
                   <div className="">
                   <Image
-                        src="/images/joel_pf_lower_res.jpg"
+                        src={`${basePath}/images/joel_pf_lower_res.jpg`}
                         alt="Profile Photo"
                         width={256} // Width in pixels (adjust as needed)
                         height={256} // Height in pixels (adjust as needed)
