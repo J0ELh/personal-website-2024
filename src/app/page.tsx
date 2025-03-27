@@ -19,6 +19,7 @@ const HomePage = () => {
                         height={256} // Height in pixels (adjust as needed)
                         className="rounded-full mb-4 object-cover" // Tailwind classes for styling
                         style={{ width: '16rem', height: '16rem' }} // Additional inline styling if needed
+                        unoptimized
                     />
                     </div>
 

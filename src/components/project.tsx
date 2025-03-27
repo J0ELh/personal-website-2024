@@ -132,6 +132,7 @@ const Project: React.FC<ProjectProps> = ({
               layout="fill"
               objectFit="cover"
               className="rounded border-black border shadow-md"
+              unoptimized
             />
             {/* Only show arrows if there’s more than one image */}
             {imagePaths.length > 1 && (
