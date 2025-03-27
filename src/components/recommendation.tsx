@@ -15,6 +15,9 @@ const Recommendation: React.FC<RecommendationProps> = ({
   link,
   imagePaths = []
 }) => {
+  const isProd = process.env.NODE_ENV === 'production';
+  const basePath = isProd ? '/personal-website-2024' : '';
+  
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const openImage = (path: string) => {
@@ -54,7 +57,7 @@ const Recommendation: React.FC<RecommendationProps> = ({
           {imagePaths.map((path, index) => (
               <Image 
                   key={index} 
-                  src={path} 
+                  src={`${basePath}path`} 
                   alt={`Recommendation ${affiliation} Image ${index + 1}`} 
                   className="m-1"
                   layout="responsive" 
@@ -75,7 +78,7 @@ const Recommendation: React.FC<RecommendationProps> = ({
         >
           <div className="relative w-full h-full max-w-4xl max-h-[90vh] flex justify-center items-center">
             <Image 
-              src={selectedImage}
+              src={`${basePath}selectedImage`}
               alt="Zoomed in" 
               unoptimized
               className="rounded"

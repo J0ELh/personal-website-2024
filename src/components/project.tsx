@@ -37,6 +37,10 @@ const Project: React.FC<ProjectProps> = ({
   link,
   imagePaths = []
 }) => {
+
+  const isProd = process.env.NODE_ENV === 'production';
+  const basePath = isProd ? '/personal-website-2024' : '';
+
   const [isExpanded, setIsExpanded] = useState(false);
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -104,7 +108,7 @@ const Project: React.FC<ProjectProps> = ({
           {technologies.map((tech, index) => (
             <div key={index} className="relative h-6 w-6 m-1">
               <Image
-                src={technologyIcons[tech]}
+                src={`${basePath}technologyIcons[tech]`}
                 alt={`${tech} logo`}
                 layout="fill"
                 objectFit="contain"
