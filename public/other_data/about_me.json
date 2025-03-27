@@ -1,0 +1,31 @@
+[
+    {
+        "postName": "Pool Test",
+        "affiliation": "UBC Subbots",
+        "date": "2025-03-12T14:00:00-08:00",
+        "location": "UBC Aquatic Centre",
+        "caption": "Doing our first pool-test. We were exercising how to setup the robot. We executed basic tests on truster alignment, input execution, and practice in working with the robot around a pool setting.",
+        "imagePaths": [
+            "/images/steelhead_3.jpg",
+            "/images/steelhead_2.jpg",
+            "/images/steelhead_1.jpg",
+            "/images/IMG_1876.jpg",
+            "/images/IMG_2353.jpg"
+        ],
+        "link": "https://www.subbots.ca/#/"
+    },
+    {
+        "postName": "Test post",
+        "affiliation": "Some company",
+        "date": "2014-03-12T13:37:27-08:00",
+        "location": "Lost Lake",
+        "caption": "I was part of the UBC Subbots team and helped development of the submarine navigation (ROS2) and localization (IMU).",
+        "imagePaths": [
+            "/images/triton.jpg",
+            "/images/team_photo_2024.jpg",
+            "/images/steelhead_1.jpg",
+            "/images/IMG_2353.jpg"
+        ]
+    }
+  ]
+  

@@ -3,7 +3,10 @@ export interface ProjectFormat {
     affiliation: string;
     description: string;
   }
-  
+
+export interface PostFormat {
+  date: string;
+}
 
 export interface RecommendationFormat {
     affiliation: string;

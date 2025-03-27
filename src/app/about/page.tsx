@@ -1,30 +1,47 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import Project from '../../components/project';  // We'll define this component next
-import {ProjectFormat} from "../types"
+import {PostFormat, ProjectFormat} from "../types"
 import { Home } from 'lucide-react';
 import HomeButton from '@/components/HomeButton';
+import Post from '@/components/post';
 
 const AboutMePage = () => {
-  const [projects, setProjects] = useState<ProjectFormat[]>([]);
+  const [posts, setPosts] = useState<PostFormat[]>([]);
   const isProd = process.env.NODE_ENV === 'production';
   const basePath = isProd ? '/personal-website-2024' : '';
 
+  
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString(undefined, {
+      day: 'numeric',
+      month: "long",
+      year: 'numeric'
+    });
+  };
+  
   useEffect(() => {
     // This is where you fetch your projects JSON
     // For now, we'll simulate this with static data
-    fetch(`${basePath}/other_data/project_info.json`)  // Adjust path as necessary
+    fetch(`${basePath}/other_data/about_me.json`)  // Adjust path as necessary
       .then(response => response.json())
-      .then((data:ProjectFormat[]) => setProjects(data))
+      .then((data:PostFormat[]) => {
+        const processedData = data.map(post => ({
+          ...post,
+          date: formatDate(post.date)
+        }));
+        setPosts(processedData);
+      })
       .catch(error => console.error('Error loading the projects:', error));
   }, [basePath]);
 
   return (
     <div className="min-h-screen bg-gray-100 p-8 text-">
-      <h1 className="text-3xl font-bold mb-4 text-center text-black">My Projects</h1>
+      <h1 className="text-3xl font-bold mb-4 text-center text-black">About Me</h1>
       <div className="flex flex-col justify-center items-center">
-        {projects.map((project, index) => (
-          <Project key={index} {...project}/>
+        {posts.map((posts, index) => (
+          <Post key={index} {...posts}/>
         ))}
       </div>
       <HomeButton />

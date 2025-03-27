@@ -8,7 +8,7 @@ type ProjectProps = {
   projectName: string;
   affiliation: string;
   description: string;
-  technologies?: string[];  // Added to include technology identifiers
+  technologies?: string[];  
   link?: string;
   imagePaths?: string[];
 };
@@ -37,10 +37,6 @@ const Project: React.FC<ProjectProps> = ({
   link,
   imagePaths = []
 }) => {
-
-  const isProd = process.env.NODE_ENV === 'production';
-  const basePath = isProd ? '/personal-website-2024' : '';
-
   const [isExpanded, setIsExpanded] = useState(false);
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -108,7 +104,7 @@ const Project: React.FC<ProjectProps> = ({
           {technologies.map((tech, index) => (
             <div key={index} className="relative h-6 w-6 m-1">
               <Image
-                src={`${basePath}${technologyIcons[tech]}`}
+                src={technologyIcons[tech]}
                 alt={`${tech} logo`}
                 layout="fill"
                 objectFit="contain"
@@ -131,12 +127,11 @@ const Project: React.FC<ProjectProps> = ({
           >
             
             <Image
-              src={`${basePath}${imagePaths.at(currentIndex) as string}`}
+              src={imagePaths.at(currentIndex) as string}
               alt={`Project ${projectName} Image`}
               layout="fill"
               objectFit="cover"
               className="rounded border-black border shadow-md"
-              unoptimized
             />
             {/* Only show arrows if there’s more than one image */}
             {imagePaths.length > 1 && (
@@ -173,7 +168,7 @@ const Project: React.FC<ProjectProps> = ({
         >
           <div className="relative w-full h-full max-w-4xl max-h-[90vh] flex justify-center items-center">
             <Image
-              src={`${basePath}${imagePaths[currentIndex]}`}
+              src={imagePaths[currentIndex]}
               alt="Zoomed In"
               layout="intrinsic"
               width={1600}
