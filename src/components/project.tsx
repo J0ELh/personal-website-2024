@@ -111,7 +111,6 @@ const Project: React.FC<ProjectProps> = ({
                 alt={`${tech} logo`}
                 layout="fill"
                 objectFit="contain"
-                unoptimized
               />
             </div>
           ))}

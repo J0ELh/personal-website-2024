@@ -62,8 +62,7 @@ const Recommendation: React.FC<RecommendationProps> = ({
                   className="m-1"
                   layout="responsive" 
                   width={16} // Aspect ratio: 16:9 (adjust as needed)
-                  height={9}
-                  unoptimized 
+                  height={9} 
                   onClick={() => openImage(path)}
               />
           ))}
@@ -80,7 +79,6 @@ const Recommendation: React.FC<RecommendationProps> = ({
             <Image 
               src={`${basePath}${selectedImage}`}
               alt="Zoomed in" 
-              unoptimized
               className="rounded"
               layout="intrinsic"
               width={1600} // Aspect ratio width

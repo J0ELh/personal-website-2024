@@ -110,7 +110,6 @@ const Post: React.FC<PostProps> = ({
               layout="fill"
               objectFit="cover"
               className="rounded border-black border shadow-md"
-              unoptimized
             />
             {imagePaths.length > 1 && (
               <>

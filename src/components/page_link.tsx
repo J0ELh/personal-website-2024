@@ -8,7 +8,7 @@ type PageLinkProps = {
 
 const PageLink: React.FC<PageLinkProps> = ({ name, redirect }) => {
     return (
-        <Link href={redirect} className="w-1/2 flex justify-center items-center text-lg m-2 p-3 bg-gray-300 rounded transition-colors duration-300 ease-in-out hover:bg-gray-400">
+        <Link href={redirect} className="w-1/2 md:min-w-[320px] md:max-w-[450px] flex justify-center items-center text-lg m-2 p-3 bg-gray-300 rounded transition-colors duration-200 ease-in-out hover:bg-gray-400">
             <div >
                 {name}
             </div>
