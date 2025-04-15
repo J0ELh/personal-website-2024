@@ -17,12 +17,10 @@ const HomePage = () => {
 // todo, implement phone homepage after i've fixed the formatting issues of this
     return (
         isSmallScreen ?
-        <div>
-            <p>
-                <MobileHomePage/>
-            </p>
+        <div className='min-h-screen bg-gray-100 p-8 text-'>
+            <MobileHomePage/>
         </div> :
-        <div>
+        <div >
             <DesktopHomepage/>
         </div>
     );
