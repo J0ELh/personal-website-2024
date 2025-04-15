@@ -2,7 +2,7 @@
 git add .
 
 # Commit changes with a message
-git commit -m "ordered posts by time"
+git commit -m "made main page web-friendly"
 
 # Push commits to the remote repository
 git push
