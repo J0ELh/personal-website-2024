@@ -34,10 +34,10 @@ body {
   }
 }
 
-.image-container {
+/* .image-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* This centers the images horizontally */
-  align-items: center; /* This centers the images vertically if needed */
-}
+  justify-content: center; 
+  align-items: center; 
+} */
 

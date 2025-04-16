@@ -31,13 +31,13 @@ const RecommendationsPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-8 text-">
-      <h1 className="text-3xl font-bold mb-4 text-center text-black">Recommendations</h1>
+      <h1 className="text-2xl sm:text-3xl  font-bold mb-4 text-center text-black">Recommendations</h1>
       <div className="flex flex-col justify-center items-center">
         {recommentations.map((recommentation, index) => (
           <Recommendation key={index} {...recommentation}/>
         ))}
       </div>
-      <h1 className="text-3xl font-bold mb-4 text-center text-black">Awards</h1>
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-center text-black mt-5">Awards</h1>
       <div className="flex flex-col justify-center items-center">
         {awards.map((award, index) => (
           <Award key={index} {...award}/>

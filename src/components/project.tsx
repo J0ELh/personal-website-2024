@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import Image from 'next/image';
+import usePostInfoContext from '@/hooks/usePostInfoContext';
 
 type ProjectProps = {
   projectName: string;
@@ -39,6 +40,8 @@ const Project: React.FC<ProjectProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const {previewLength, previewThreshold} = usePostInfoContext();
+  
 
   const isProd = process.env.NODE_ENV === 'production';
   const basePath = isProd ? '/personal-website-2024' : '';
@@ -61,7 +64,6 @@ const Project: React.FC<ProjectProps> = ({
     if ((e.target as Element).id === 'overlay') setOverlayOpen(false);
   };
 
-  const previewLength = 100;
 
   return (
     <div className="m-4 p-4 bg-white rounded-lg w-full md:w-[60vw] max-w-[600px]">
@@ -172,7 +174,7 @@ const Project: React.FC<ProjectProps> = ({
       )}
 
       {/* ---------- description & read‑more ---------- */}
-      {isExpanded || description.length <= previewLength ? (
+      {isExpanded || description.length <= previewThreshold ? (
         <p className="text-gray-900">{description}</p>
       ) : (
         <p className="text-gray-900">
@@ -180,7 +182,7 @@ const Project: React.FC<ProjectProps> = ({
         </p>
       )}
 
-      {description.length > previewLength && (
+      {description.length > previewThreshold && (
         <button
           onClick={toggleDescription}
           className="mt-2 text-blue-500 hover:text-blue-700"

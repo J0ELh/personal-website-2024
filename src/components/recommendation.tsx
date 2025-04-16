@@ -35,7 +35,7 @@ const Recommendation: React.FC<RecommendationProps> = ({
   };
 
   return (
-    <div className="container">
+    <div className="flex flex-col items-center">
       <div className='flex flex-row items-center justify-between'>
         {link ? (
           <Link href={link} className='text-decoration-line'>
@@ -48,41 +48,42 @@ const Recommendation: React.FC<RecommendationProps> = ({
 
           </Link>
         ) : (
-          <h2 className="text-xl font-bold text-gray-500 mb-2">{affiliation}</h2>
+          <h2 className="text-md md:text-xl font-bold text-gray-500 mb-2">{affiliation}</h2>
         )}
         
       </div>
       
-      <div className="image-container">
-          {imagePaths.map((path, index) => (
-              <Image 
-                  key={index} 
-                  src={`${basePath}${path}`} 
-                  alt={`Recommendation ${affiliation} Image ${index + 1}`} 
-                  className="m-1"
-                  layout="responsive" 
-                  width={16} // Aspect ratio: 16:9 (adjust as needed)
-                  height={9} 
-                  onClick={() => openImage(path)}
-              />
-          ))}
+      <div className="image-container grid grid-cols-1 gap-4">
+        {imagePaths.map((path, idx) => (
+          <Image
+            key={idx}
+            src={`${basePath}${path}`}
+            alt={`Recommendation ${affiliation} ${idx + 1}`}
+            width={600}            // real pixels
+            height={338}           // keeps 16 : 9
+            sizes="(max-width:600px) 100vw, 600px"  // never render wider
+            className="rounded cursor-pointer"
+            onClick={() => openImage(path)}
+          />
+        ))}
       </div>
 
 
-      {selectedImage && (
+      {
+      selectedImage && (
         <div 
           id="overlay" 
           className="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 flex justify-center items-center"
           onClick={handleOverlayClick}
         >
-          <div className="relative w-full h-full max-w-4xl max-h-[90vh] flex justify-center items-center">
+          <div className="relative max-w-[600px] max-h-[90vh] flex justify-center items-center">
             <Image 
               src={`${basePath}${selectedImage}`}
               alt="Zoomed in" 
               className="rounded"
               layout="intrinsic"
-              width={1600} // Aspect ratio width
-              height={900} // Aspect ratio height
+              width={1600} 
+              height={900} 
               onClick={(e) => e.stopPropagation()} 
             />
           </div>

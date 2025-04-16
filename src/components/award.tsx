@@ -16,16 +16,16 @@ const Award: React.FC<AwardProps> = ({
   
 
   return (
-    <div className="container">
+    <div className="mx-auto my-3 p-3 sm:p-6 bg-white rounded-lg shadow-md w-full max-w-[600px]">
       <div className='flex flex-row items-center justify-between'>
-        <h2 className="text-l font-bold text-gray-900 mb-2 relative">
+        <h2 className="text-sm sm:text-lg font-bold text-gray-900 mb-2 relative">
             {name}
         </h2>
 
-        <h2 className="text-l font-bold text-gray-500 mb-2">{affiliation}</h2>
+        <h2 className="text-xs sm:text-lg font-bold text-gray-500 mb-2">{affiliation}</h2>
         
       </div>
-      <h3 className='text-gray-500'>{description}</h3>
+      <h3 className='text-gray-500 text-xs'>{description}</h3>
       
 
 

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import Image from 'next/image';
+import usePostInfo from '@/hooks/usePostInfoContext';
+import usePostInfoContext from '@/hooks/usePostInfoContext';
 
 type PostProps = {
   postName?: string;
@@ -27,6 +29,7 @@ const Post: React.FC<PostProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const {previewLength, previewThreshold} = usePostInfoContext();
 
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
@@ -63,7 +66,7 @@ const Post: React.FC<PostProps> = ({
     }
   };
 
-  const previewLength = 100;
+
 
   return (
     <div className="mx-auto my-6 p-3 sm:p-6 bg-white rounded-lg shadow-md w-full max-w-[600px]">
@@ -169,7 +172,7 @@ const Post: React.FC<PostProps> = ({
             )}
       
             {/* ---------- caption & read‑more ---------- */}
-            {isExpanded || caption && caption.length <= previewLength ? (
+            {isExpanded || caption && caption.length <= previewThreshold ? (
               <p className="text-gray-900">{caption}</p>
             ) : (
               caption ?
@@ -181,7 +184,7 @@ const Post: React.FC<PostProps> = ({
                 </div>
             )}
       
-            {caption && caption.length > previewLength && (
+            {caption && caption.length > previewThreshold && (
               <button
                 onClick={toggleDescription}
                 className="mt-2 text-blue-500 hover:text-blue-700"
