@@ -63,45 +63,45 @@ const Post: React.FC<PostProps> = ({
     }
   };
 
-  const previewLength = 250;
+  const previewLength = 100;
 
   return (
-    <div className="container">
+    <div className="mx-auto my-6 p-3 sm:p-6 bg-white rounded-lg shadow-md w-full max-w-[600px]">
+      {/* Header: Post title and affiliation side by side */}
       <div className="flex flex-row items-center justify-between">
         {link ? (
-          <Link href={link} passHref>
-            <h2 className="text-xl font-bold text-gray-500  mb-2 cursor-pointer relative 
-                          hover:before:content-[''] hover:before:absolute hover:before:bottom-0 
-                          hover:before:left-0 hover:before:w-full hover:before:h-[2px] hover:before:bg-blue-500 
-                          hover:before:transition-all hover:before:duration-500 hover:text-blue-500 ">
+          <Link href={link} className="group flex-1">
+            <h2 className="text-md sm:text-xl font-bold text-gray-800 hover:text-blue-500 transition-colors duration-300 text-left">
               {postName || ""}
+              
             </h2>
           </Link>
         ) : (
-          <h2 className="select:none text-xl font-bold text-gray-500 mb-2">
+          <h2 className="flex-1 text-md sm:text-xl font-bold text-gray-800 text-left">
             {postName || ""}
           </h2>
         )}
         {affiliation && (
-          <h3 className="text-md text-blue-800 select-none">{affiliation}</h3>
+          <h3 className="ml-4 text-xs sm:text-base text-blue-800 text-center sm:text-left">
+            {affiliation}
+          </h3>
         )}
       </div>
-
-      <div className="p-2 flex justify-between items-center">
-        <div className="ml-2 text-sm text-gray-700">{date}</div>
+    
+      {/* Meta Information: Date and Location */}
+      <div className="border-t mt-4 pt-3 flex flex-col sm:flex-row justify-between items-center text-xs md:text-sm text-gray-600">
+        <div className="mt-0">{date}</div>
         {location && (
-          <div className="mr-2 text-sm text-gray-700">{location}</div>
+          <div className="mt-0">{location}</div>
         )}
       </div>
 
       {imagePaths.length > 0 && (
-        <div
-          className="image-container grid grid-cols-2 gap-4"
-          style={{ height: '500px' }}
-        >
+        // Outer container: height adjusts responsively from 256px (mobile) to 500px on larger screens
+        <div className="image-container grid grid-cols-1 gap-4 h-64 sm:h-[500px]">
+          {/* Inner container: fills the parent container */}
           <div
-            className="relative cursor-pointer"
-            style={{ height: '90%', width: '90%' }}
+            className="relative cursor-pointer h-full w-full"
             onClick={() => openOverlayAtIndex(currentIndex)}
           >
             <Image
@@ -111,17 +111,18 @@ const Post: React.FC<PostProps> = ({
               objectFit="cover"
               className="rounded border-black border shadow-md"
             />
+            {/* Navigation arrows */}
             {imagePaths.length > 1 && (
               <>
                 <button
                   onClick={handlePrevious}
-                  className="absolute top-1/2 left-0 transform -translate-y-1/2 text-2xl bg-gray-400 bg-opacity-50 rounded h-1/4 p-2 m-2 hover:bg-opacity-70"
+                  className="absolute top-1/2 left-0 -translate-y-1/2 p-2 sm:p-3 text-2xl bg-gray-400/60 rounded hover:bg-gray-400/80"
                 >
                   &#10094;
                 </button>
                 <button
                   onClick={handleNext}
-                  className="absolute top-1/2 right-0 transform -translate-y-1/2 text-2xl bg-gray-400 bg-opacity-50 rounded h-1/4 p-2 m-2 hover:bg-opacity-70"
+                  className="absolute top-1/2 right-0 -translate-y-1/2 p-2 sm:p-3 text-2xl bg-gray-400/60 rounded hover:bg-gray-400/80"
                 >
                   &#10095;
                 </button>
@@ -132,62 +133,65 @@ const Post: React.FC<PostProps> = ({
       )}
 
       {overlayOpen && imagePaths.length > 0 && (
-        <div
-          id="overlay"
-          className="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 flex justify-center items-center"
-          onClick={handleOverlayClick}
-        >
-          <div className="relative w-full h-full max-w-4xl max-h-[90vh] flex justify-center items-center">
-            <Image
-              src={`${basePath}${imagePaths[currentIndex]}`}
-              alt="Zoomed In"
-              layout="intrinsic"
-              width={1600}
-              height={900}
-              className="rounded"
-              onClick={(e) => e.stopPropagation()}
-            />
-            {imagePaths.length > 1 && (
-              <>
-                <button
-                  onClick={handlePrevious}
-                  className="absolute left-0 text-2xl bg-gray-400 bg-opacity-50 rounded h-1/4 p-2 m-2 hover:bg-opacity-70"
-                >
-                  &#10094;
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="absolute right-0 text-2xl bg-gray-400 bg-opacity-50 rounded h-1/4 p-2 m-2 hover:bg-opacity-70"
-                >
-                  &#10095;
-                </button>
-              </>
+              <div
+                id="overlay"
+                className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/80"
+                onClick={handleOverlayClick}
+              >
+                <div className="relative max-w-[90vw] max-h-[90vh]">
+                  <Image
+                    src={`${basePath}${imagePaths[currentIndex]}`}
+                    alt="Zoomed in"
+                    width={1600}
+                    height={1600}
+                    className="object-contain max-w-full max-h-full rounded"
+                    priority
+                  />
+      
+                  {imagePaths.length > 1 && (
+                    <>
+                      <button
+                        onClick={handlePrevious}
+                        className="absolute left-0 top-1/2 -translate-y-1/2 p-3 text-3xl bg-gray-400/60 rounded hover:bg-gray-400/80"
+                      >
+                        &#10094;
+                      </button>
+                      <button
+                        onClick={handleNext}
+                        className="absolute right-0 top-1/2 -translate-y-1/2 p-3 text-3xl bg-gray-400/60 rounded hover:bg-gray-400/80"
+                      >
+                        &#10095;
+                      </button>
+                    </>
+                  )}
+                </div>
+              </div>
+            )}
+      
+            {/* ---------- caption & read‑more ---------- */}
+            {isExpanded || caption && caption.length <= previewLength ? (
+              <p className="text-gray-900">{caption}</p>
+            ) : (
+              caption ?
+                <p className="text-gray-900">
+                {caption.slice(0, previewLength)}…
+                </p>
+                :
+                <div>
+                </div>
+            )}
+      
+            {caption.length > previewLength && (
+              <button
+                onClick={toggleDescription}
+                className="mt-2 text-blue-500 hover:text-blue-700"
+              >
+                {isExpanded ? 'Read Less' : 'Read More'}
+              </button>
             )}
           </div>
-        </div>
-      )}
-
-      {caption && (
-        <>
-          {isExpanded || caption.length <= previewLength ? (
-            <p className="text-gray-900">{caption}</p>
-          ) : (
-            <p className="text-gray-900">
-              {caption.substring(0, previewLength)}...
-            </p>
-          )}
-          {caption.length > previewLength && (
-            <button
-              onClick={toggleDescription}
-              className="text-blue-500 hover:text-blue-700"
-            >
-              {isExpanded ? 'Read Less' : 'Read More'}
-            </button>
-          )}
-        </>
-      )}
-    </div>
-  );
-};
-
+        );
+      };
+      
 export default Post;
+      

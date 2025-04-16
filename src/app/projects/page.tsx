@@ -1,8 +1,7 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from 'react';
-import Project from '../../components/project';  // We'll define this component next
-import {ProjectFormat} from "../types"
-import { Home } from 'lucide-react';
+import Project from '../../components/project';
+import { ProjectFormat } from "../types";
 import HomeButton from '@/components/HomeButton';
 
 const ProjectsPage = () => {
@@ -11,21 +10,18 @@ const ProjectsPage = () => {
   const basePath = isProd ? '/personal-website-2024' : '';
 
   useEffect(() => {
-    // This is where you fetch your projects JSON
-    // For now, we'll simulate this with static data
-    console.log("fetching", `${basePath}/other_data/project_info.json`)
-    fetch(`${basePath}/other_data/project_info.json`)  // Adjust path as necessary
+    fetch(`${basePath}/other_data/project_info.json`)
       .then(response => response.json())
-      .then((data:ProjectFormat[]) => setProjects(data))
+      .then((data: ProjectFormat[]) => setProjects(data))
       .catch(error => console.error('Error loading the projects:', error));
   }, [basePath]);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8 text-">
-      <h1 className="text-3xl font-bold mb-4 text-center text-black">My Projects</h1>
-      <div className="flex flex-col justify-center items-center">
+    <div className="min-h-screen bg-gray-100 p-4 sm:p-8">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-center text-black">My Projects</h1>
+      <div className="flex flex-col items-center">
         {projects.map((project, index) => (
-          <Project key={index} {...project}/>
+          <Project key={index} {...project} />
         ))}
       </div>
       <HomeButton />

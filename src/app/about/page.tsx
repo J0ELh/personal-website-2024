@@ -41,7 +41,7 @@ const AboutMePage = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-8 text-">
-      <h1 className="text-3xl font-bold mb-4 text-center text-black">About Me</h1>
+      <h1 className="text-2xl md:text-3xl font-bold mb-4 text-center text-black">About Me</h1>
       <div className="flex flex-col justify-center items-center">
         {posts.map((posts, index) => (
           <Post key={index} {...posts}/>

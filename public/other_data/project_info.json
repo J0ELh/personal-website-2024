@@ -2,7 +2,7 @@
     {
         "projectName": "Autonomous Unverwater Vehicle (AUV)",
         "affiliation": "UBC Subbots (Software Sub-team)",
-        "description": "I was part of the UBC Subbots team and helped development of the submarine navigation (ROS2) and localization (IMU).",
+        "description": "As part of the software team on UBC Subbots, I helped develop autonomous navigation scripts for our robot (ROS2). I was also responsible for organizing and implementing the addition of a new intertial measurement unit (IMU).",
         "imagePaths": [
             "/images/triton.jpg",
             "/images/team_photo_2024.jpg",
@@ -15,11 +15,11 @@
     {
         "projectName": "Symbol Counter",
         "affiliation": "Metrized Consulting Inc.",
-        "description": "I was the full-stack developer leading the creation of this symbol counting application. Key technologies for this application included a fastapi backend deployed through docker. A custom-trained object detection model. And finally, a Supabase authenticated NEXT.js frontend.",
+        "description": "I lead the creation of an AI-powered cost estimation application. Key technologies for this application included a fastapi backend deployed through docker. The frontend was authenticated through Supabase and built on NEXT.js. I custom-trained an object detection model including multiple levels of augmentation and experiment based optimizations.",
         "imagePaths": [
             "/images/symbol-counter-app.PNG"
         ],
-        "technologies": ["Python", "FastAPI", "NextJS", "React", "Supabase", "Yolo"]
+        "technologies": ["Python", "FastAPI", "NextJS", "React", "Supabase", "Yolo", "Docker"]
     },
     {
         "projectName": "Neurips 2023 Conference Paper",

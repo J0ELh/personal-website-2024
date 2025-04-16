@@ -2,7 +2,7 @@
 git add .
 
 # Commit changes with a message
-git commit -m "made main page web-friendly"
+git commit -m "made main projects and posts pages mobile-compatible"
 
 # Push commits to the remote repository
 git push
