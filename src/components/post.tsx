@@ -181,7 +181,7 @@ const Post: React.FC<PostProps> = ({
                 </div>
             )}
       
-            {caption.length > previewLength && (
+            {caption && caption.length > previewLength && (
               <button
                 onClick={toggleDescription}
                 className="mt-2 text-blue-500 hover:text-blue-700"
