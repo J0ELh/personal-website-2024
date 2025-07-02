@@ -2,7 +2,7 @@
 git add .
 
 # Commit changes with a message
-git commit -m "minor fix"
+git commit -m "reduced image size"
 
 # Push commits to the remote repository
 git push
