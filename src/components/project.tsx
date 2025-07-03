@@ -1,7 +1,6 @@
-import Link from 'next/link';
-import React, { useState } from 'react';
-import Image from 'next/image';
-import usePostInfoContext from '@/hooks/usePostInfoContext';
+import Link from "next/link";
+import React, { useState } from "react";
+import usePostInfoContext from "@/hooks/usePostInfoContext";
 
 type ProjectProps = {
   projectName: string;
@@ -13,20 +12,20 @@ type ProjectProps = {
 };
 
 const technologyIcons: Record<string, string> = {
-  Java: '/svgs/java.svg',
-  Unity: '/svgs/unity-69.svg',
-  FastAPI: '/svgs/fastapi-1.svg',
-  NextJS: '/svgs/nextjs-2.svg',
-  Python: '/svgs/python-5.svg',
-  React: '/svgs/react-2.svg',
-  Supabase: '/svgs/supabase.svg',
-  Yolo: '/svgs/yolo.svg',
-  ScikitLearn: '/svgs/scikit-learn.svg',
-  ROS2: '/svgs/ros.svg',
-  C: '/svgs/c.svg',
-  Arduino: '/svgs/arduino.svg',
-  IMU: '/svgs/imu.svg',
-  Docker: '/svgs/docker.svg'
+  Java: "/svgs/java.svg",
+  Unity: "/svgs/unity-69.svg",
+  FastAPI: "/svgs/fastapi-1.svg",
+  NextJS: "/svgs/nextjs-2.svg",
+  Python: "/svgs/python-5.svg",
+  React: "/svgs/react-2.svg",
+  Supabase: "/svgs/supabase.svg",
+  Yolo: "/svgs/yolo.svg",
+  ScikitLearn: "/svgs/scikit-learn.svg",
+  ROS2: "/svgs/ros.svg",
+  C: "/svgs/c.svg",
+  Arduino: "/svgs/arduino.svg",
+  IMU: "/svgs/imu.svg",
+  Docker: "/svgs/docker.svg",
 };
 
 const Project: React.FC<ProjectProps> = ({
@@ -40,11 +39,10 @@ const Project: React.FC<ProjectProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const {previewLength, previewThreshold} = usePostInfoContext();
-  
+  const { previewLength, previewThreshold } = usePostInfoContext();
 
-  const isProd = process.env.NODE_ENV === 'production';
-  const basePath = isProd ? '/personal-website-2024' : '';
+  // const isProd = process.env.NODE_ENV === 'production';
+  // const basePath = isProd ? '/personal-website-2024' : '';
 
   /* ---------- helpers ---------- */
   const toggleDescription = () => setIsExpanded((p) => !p);
@@ -61,9 +59,8 @@ const Project: React.FC<ProjectProps> = ({
     setCurrentIndex((i) => (i === imagePaths.length - 1 ? 0 : i + 1));
   };
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if ((e.target as Element).id === 'overlay') setOverlayOpen(false);
+    if ((e.target as Element).id === "overlay") setOverlayOpen(false);
   };
-
 
   return (
     <div className="m-4 p-4 bg-white rounded-lg w-full md:w-[60vw] max-w-[600px]">
@@ -76,9 +73,13 @@ const Project: React.FC<ProjectProps> = ({
             </h2>
           </Link>
         ) : (
-          <h2 className="text-sm md:text-md lg:text-lg font-bold text-gray-500 mb-2">{projectName}</h2>
+          <h2 className="text-sm md:text-md lg:text-lg font-bold text-gray-500 mb-2">
+            {projectName}
+          </h2>
         )}
-        <h3 className="text-xs md:text-sm lg:text-md text-blue-800">{affiliation}</h3>
+        <h3 className="text-xs md:text-sm lg:text-md text-blue-800">
+          {affiliation}
+        </h3>
       </div>
 
       {/* ---------- tech badges ---------- */}
@@ -86,8 +87,8 @@ const Project: React.FC<ProjectProps> = ({
         <div className="flex flex-wrap ml-2">
           {technologies.map((tech) => (
             <div key={tech} className="relative h-6 w-6 m-1">
-              <Image
-                src={`${basePath}${technologyIcons[tech]}`}
+              <img
+                src={`${technologyIcons[tech]}`}
                 alt={`${tech} logo`}
                 fill
                 sizes="24px"
@@ -98,22 +99,24 @@ const Project: React.FC<ProjectProps> = ({
         </div>
       </div>
 
-        {/* ---------- full‑width, centred thumbnail ---------- */}
-        <div className="w-full flex justify-center mb-4">
+      {/* ---------- full‑width, centred thumbnail ---------- */}
+      <div className="w-full flex justify-center mb-4">
         {imagePaths.length > 0 && (
           <div
             className="relative w-full aspect-square cursor-pointer max-w-[600px]"
             onClick={() => openOverlayAtIndex(currentIndex)}
           >
             {/* square thumbnail */}
-            <Image
-              src={`${basePath}${imagePaths[currentIndex]}`}
-              alt={`Project ${projectName} Image`}
-              fill
-              className="object-cover rounded border shadow-md"
-              sizes="(max-width: 640px) 100vw, 50vw"
-              priority
-            />
+            <div className="w-full h-full overflow-hidden rounded border shadow-md flex items-center justify-center">
+              <img
+                src={imagePaths[currentIndex]}
+                alt={`Project ${projectName} Image`}
+                className="object-cover w-full h-full"
+                fetchPriority="low"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
 
             {/* nav arrows */}
             {imagePaths.length > 1 && (
@@ -144,8 +147,8 @@ const Project: React.FC<ProjectProps> = ({
           onClick={handleOverlayClick}
         >
           <div className="relative max-w-[90vw] max-h-[90vh]">
-            <Image
-              src={`${basePath}${imagePaths[currentIndex]}`}
+            <img
+              src={`${imagePaths[currentIndex]}`}
               alt="Zoomed in"
               width={1600}
               height={1600}
@@ -177,9 +180,7 @@ const Project: React.FC<ProjectProps> = ({
       {isExpanded || description.length <= previewThreshold ? (
         <p className="text-gray-900">{description}</p>
       ) : (
-        <p className="text-gray-900">
-          {description.slice(0, previewLength)}…
-        </p>
+        <p className="text-gray-900">{description.slice(0, previewLength)}…</p>
       )}
 
       {description.length > previewThreshold && (
@@ -187,7 +188,7 @@ const Project: React.FC<ProjectProps> = ({
           onClick={toggleDescription}
           className="mt-2 text-blue-500 hover:text-blue-700"
         >
-          {isExpanded ? 'Read Less' : 'Read More'}
+          {isExpanded ? "Read Less" : "Read More"}
         </button>
       )}
     </div>

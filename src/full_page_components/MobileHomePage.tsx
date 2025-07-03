@@ -1,24 +1,17 @@
-import Image from "next/image";
 import PageLink from "@/components/PageLink";
-import useDeploymentContext from "@/hooks/useDeploymentContext";
-import {
-  Github,
-  Linkedin,
-  LucideMapPinHouse,
-  Mail,
-  Phone,
-} from "lucide-react";
+
+import { Github, Linkedin, LucideMapPinHouse, Mail, Phone } from "lucide-react";
 
 export const MobileHomePage = () => {
-  const basePath = useDeploymentContext();
+  // const basePath = useDeploymentContext();
 
   return (
     <div className="min-h-screen bg-gray-200 py-6 px-4 text-black flex flex-col gap-8">
       {/* -------- profile + contact card -------- */}
       <section className="bg-gray-300/70 rounded-2xl shadow-lg px-6 py-8 flex flex-col items-center gap-6">
         {/* avatar */}
-        <Image
-          src={`${basePath}/images/joel_pf_lower_res.jpg`}
+        <img
+          src={`/images/joel_pf_lower_res.jpg`}
           alt="Profile Photo"
           width={160}
           height={160}
@@ -77,7 +70,7 @@ export const MobileHomePage = () => {
       {/* -------- nav buttons -------- */}
       <nav className="grid gap-4">
         <a
-          href={`${basePath}/other_data/Joel_Hempel_Resume.pdf`}
+          href={`/other_data/Joel_Hempel_Resume.pdf`}
           target="_blank"
           rel="noopener noreferrer"
           className="w-full rounded-xl bg-gray-300 py-3 text-center text-lg font-medium transition hover:bg-gray-400"
@@ -86,7 +79,10 @@ export const MobileHomePage = () => {
         </a>
 
         <PageLink name="Projects" redirect="projects" />
-        <PageLink name="Recommendations & Awards" redirect="recommendations_awards" />
+        <PageLink
+          name="Recommendations & Awards"
+          redirect="recommendations_awards"
+        />
         <PageLink name="About Me" redirect="about" />
       </nav>
     </div>
