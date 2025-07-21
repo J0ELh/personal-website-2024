@@ -21,7 +21,9 @@ export const DesktopHomepage = () => {
             width={256}
             height={256}
             className="rounded-full object-cover"
-            unoptimized
+            fetchPriority="low"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 

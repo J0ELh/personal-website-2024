@@ -16,8 +16,9 @@ export const MobileHomePage = () => {
           width={160}
           height={160}
           className="rounded-full object-cover"
-          priority
-          unoptimized
+          fetchPriority="low"
+          loading="lazy"
+          decoding="async"
         />
 
         {/* name */}

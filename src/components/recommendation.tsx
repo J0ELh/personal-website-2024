@@ -79,7 +79,6 @@ const Recommendation: React.FC<RecommendationProps> = ({
               src={`${selectedImage}`}
               alt="Zoomed in"
               className="rounded"
-              layout="intrinsic"
               width={1600}
               height={900}
               onClick={(e) => e.stopPropagation()}

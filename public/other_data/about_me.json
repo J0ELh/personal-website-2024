@@ -1,31 +1,49 @@
 [
-    {
-        "postName": "Pool Test",
-        "affiliation": "UBC Subbots",
-        "date": "2025-03-12T14:00:00-08:00",
-        "location": "UBC Aquatic Centre",
-        "caption": "Doing our first pool-test. We were exercising how to setup the robot. We executed basic tests on truster alignment, input execution, and practice in working with the robot around a pool setting.",
-        "imagePaths": [
-            "/images/steelhead_3.jpg",
-            "/images/steelhead_2.jpg",
-            "/images/steelhead_1.jpg",
-            "/images/IMG_1876.jpg",
-            "/images/IMG_2353.jpg"
-        ],
-        "link": "https://www.subbots.ca/#/"
-    },
-    {
-        "postName": "Test post",
-        "affiliation": "Some company",
-        "date": "2014-03-12T13:37:27-08:00",
-        "location": "Lost Lake",
-        "caption": "I was part of the UBC Subbots team and helped development of the submarine navigation (ROS2) and localization (IMU).",
-        "imagePaths": [
-            "/images/triton.jpg",
-            "/images/team_photo_2024.jpg",
-            "/images/steelhead_1.jpg",
-            "/images/IMG_2353.jpg"
-        ]
-    }
-  ]
-  
+  {
+    "postName": "Pool Test",
+    "affiliation": "UBC Subbots",
+    "date": "2025-03-12T14:00:00-08:00",
+    "location": "UBC Aquatic Centre",
+    "caption": "Doing our first pool-test. We were exercising how to setup the robot. We executed basic tests on truster alignment, input execution, and practice in working with the robot around a pool setting.",
+    "imagePaths": [
+      "/images/steelhead_3.jpg",
+      "/images/steelhead_2.jpg",
+      "/images/steelhead_1.jpg",
+      "/images/IMG_1876.jpg",
+      "/images/IMG_2353.jpg"
+    ],
+    "link": "https://www.subbots.ca/#/"
+  },
+  {
+    "affiliation": "UBC World Cup",
+    "postName": "UBC World Cup",
+    "date": "2025-04-06T13:37:27-08:00",
+    "location": "UBC Mini Fields",
+    "caption": "My first time at the UBC World Cup. I was representing team Taiwan. It was an amazing atmosphere.",
+    "imagePaths": [
+      "/images/about-image-folders/ubc world cup - april 6 2025/A275EAB1-D27A-4BF7-AFF5-87D5D3525006.JPG"
+    ]
+  },
+  {
+    "date": "2024-06-06T13:37:27-08:00",
+    "location": "Las Vegas & Grand Canyon",
+    "caption": "First time in Las Vegas. We also hiked down Grand Canyon at like 36 degrees mid-June in the middle of the day.",
+    "imagePaths": [
+      "/images/about-image-folders/las vegas june 2024/IMG_9237.jpg",
+      "/images/about-image-folders/las vegas june 2024/first.JPEG",
+      "/images/about-image-folders/las vegas june 2024/IMG_8700.JPG",
+      "/images/about-image-folders/las vegas june 2024/20240618_182257.JPEG"
+    ]
+  },
+  {
+    "affiliation": "The University of British Columbia",
+    "postName": "UBC Computer Science Gala",
+    "date": "2025-04-09T13:37:27-08:00",
+    "location": "Heritage Hall",
+    "imagePaths": [
+      "/images/about-image-folders/ubc cs gala - april 9 2025/a453aeeb-60a0-470a-8778-941cd4e65a11.JPG",
+      "/images/about-image-folders/ubc cs gala - april 9 2025/bc8cf6d7-3509-470f-9491-a00727069129.JPG",
+      "/images/about-image-folders/ubc cs gala - april 9 2025/08488fb0-bcc7-4817-a62f-82ede7fde986.JPG"
+    ]
+  }
+]

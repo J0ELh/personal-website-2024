@@ -26,14 +26,13 @@ const AboutMePage = () => {
     fetch(`/other_data/about_me.json`) // Adjust path as necessary
       .then((response) => response.json())
       .then((data: PostFormat[]) => {
+        // Sort by the original ISO date string
+        data.sort((a, b) => (a.date > b.date ? -1 : a.date < b.date ? 1 : 0));
+        // Then format the date for display
         const processedData = data.map((post) => ({
           ...post,
           date: formatDate(post.date),
         }));
-        processedData.sort((a, b) =>
-          a.date > b.date ? -1 : a.date < b.date ? 1 : 0
-        );
-
         setPosts(processedData);
       })
       .catch((error) => console.error("Error loading the projects:", error));

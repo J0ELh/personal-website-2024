@@ -90,9 +90,11 @@ const Project: React.FC<ProjectProps> = ({
               <img
                 src={`${technologyIcons[tech]}`}
                 alt={`${tech} logo`}
-                fill
+                className="object-cover w-full h-full"
                 sizes="24px"
-                className="object-contain"
+                fetchPriority="low"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           ))}
@@ -153,7 +155,9 @@ const Project: React.FC<ProjectProps> = ({
               width={1600}
               height={1600}
               className="object-contain max-w-full max-h-full rounded"
-              priority
+              fetchPriority="low"
+              loading="lazy"
+              decoding="async"
             />
 
             {imagePaths.length > 1 && (
