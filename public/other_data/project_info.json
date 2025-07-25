@@ -1,60 +1,63 @@
 [
-    {
-        "projectName": "Autonomous Unverwater Vehicle (AUV)",
-        "affiliation": "UBC Subbots (Software Sub-team)",
-        "description": "As part of the software team on UBC Subbots, I helped develop autonomous navigation scripts for our robot (ROS2). I was also responsible for organizing and implementing the addition of a new intertial measurement unit (IMU).",
-        "imagePaths": [
-            "/images/triton.jpg",
-            "/images/team_photo_2024.jpg",
-            "/images/steelhead_1.jpg",
-            "/images/IMG_2353.jpg"
-        ],
-        "technologies": ["C", "Arduino", "IMU", "ROS2"],
-        "link": "https://www.subbots.ca/#/"
-    },
-    {
-        "projectName": "Symbol Counter",
-        "affiliation": "Metrized Consulting Inc.",
-        "description": "I lead the creation of an AI-powered cost estimation application. Key technologies for this application included a fastapi backend deployed through docker. The frontend was authenticated through Supabase and built on NEXT.js. I custom-trained an object detection model including multiple levels of augmentation and experiment based optimizations.",
-        "imagePaths": [
-            "/images/symbol-counter-app.PNG"
-        ],
-        "technologies": ["Python", "FastAPI", "NextJS", "React", "Supabase", "Yolo", "Docker"]
-    },
-    {
-        "projectName": "Neurips 2023 Conference Paper",
-        "affiliation": "Systopia Laboratory",
-        "link": "https://s3.us-east-1.amazonaws.com/climate-change-ai/papers/neurips2023/40/paper.pdf",
-        "imagePaths": ["/images/research-paper.PNG"],
-        "description": "This conference paper aimed summarized our machine learning research results. The goal was to predict the beginning of Spring time using different types of data (e.g. sallelite, temperature, ground-type) to monitor climate change and to inform farmers on crop-yield predictions.",
-        "technologies": ["Python", "ScikitLearn"]
-
-    },      
-    {
-        "projectName": "Royalty of the Pitch",
-        "affiliation": "NWPlus Hackathon",
-        "link": "https://github.com/J0ELh/Royalty-of-the-Pitch",
-        "description": "I created this card-game for the 2024 nwPlus hackathon at UBC. The game is based on a fastapi backend with a React client. All player information was gained through a combination of kaggle datasets and webscraping. The goal of the game is to win all of your opponents cards by picking favourable statistics on your randomly dealt hand of cards. If your player's statistic is better for the given trait, you win your opponents top card.",
-        "imagePaths": [
-            "/images/royalty-of-the-pitch-example.PNG"
-        ],
-        "technologies": ["Python", "FastAPI", "React"] 
-    },
-    {
-        "projectName": "Chore Tracker",
-        "link": "https://github.com/J0ELh/Personal-Chore-Tracker-Project",
-        "affiliation": "University of British Columbia",
-        "technologies": ["Java"],
-        "imagePaths": ["/images/not-available.jpg"],
-        "description": "I created a chore tracker application in Java. This project focused on test-driven development using best design principles. Given a house with multiple people living in it, the app allowed to track and distribute chores throughout the household. An algorithm ensured that people got a good balance of easy and hard tasks so that nobody would end up with too much work."
-    },
-    {
-        "projectName": "2D Platformer",
-        "affiliation": "University of British Columbia",
-        "link": "https://www.youtube.com/watch?v=EDGmATVzSjM",
-        "imagePaths":["/images/platformer.PNG"],
-        "technologies": ["Unity"],
-        "description": "Using the Unity game engine and C#, my friends and I created a platforming game inspired by super mario."
-    }
-  ]
-  
+  {
+    "projectName": "Autonomous Robot",
+    "affiliation": "UBC Subbots (Software Sub-team)",
+    "description": "As part of the software team on UBC Subbots, I am helping develop autonomous navigation scripts for our robot in C++, python and other scripting languages. I am also responsible for organizing and implementing the addition of a new intertial measurement unit (IMU). I was also responsible for redoing the entire website from scratch within ~3 weeks. Finally, I am attending the RoboNation AUV comptetition in August 2025.",
+    "imagePaths": [
+      "/images/triton.jpg",
+      "/images/team_photo_2024.jpg",
+      "/images/steelhead_1.jpg",
+      "/images/IMG_2353.jpg",
+      "/images/subbots_website_redone.PNG"
+    ],
+    "technologies": ["C", "Arduino", "IMU", "ROS2"],
+    "link": "https://www.subbots.ca/#/"
+  },
+  {
+    "projectName": "Symbol Counter",
+    "affiliation": "Metrized Consulting Inc.",
+    "description": "I lead the creation of an AI-powered cost estimation application. Key technologies for this application included a fastapi backend deployed through docker. The frontend was authenticated through Supabase and built on NEXT.js. I custom-trained an object detection model including multiple levels of augmentation and experiment based optimizations.",
+    "imagePaths": ["/images/symbol-counter-app.PNG"],
+    "technologies": [
+      "Python",
+      "FastAPI",
+      "NextJS",
+      "React",
+      "Supabase",
+      "Yolo",
+      "Docker"
+    ]
+  },
+  {
+    "projectName": "Neurips 2023 Conference Paper",
+    "affiliation": "Systopia Laboratory",
+    "link": "/other_data/paper.pdf",
+    "imagePaths": ["/images/research-paper.PNG"],
+    "description": "This conference paper aimed summarized our machine learning research results. The goal was to predict the beginning of Spring time using different types of data (e.g. sallelite, temperature, ground-type) to monitor climate change and to inform farmers on crop-yield predictions.",
+    "technologies": ["Python", "ScikitLearn"]
+  },
+  {
+    "projectName": "Royalty of the Pitch",
+    "affiliation": "NWPlus Hackathon",
+    "link": "https://github.com/J0ELh/Royalty-of-the-Pitch",
+    "description": "I created this card-game for the 2024 nwPlus hackathon at UBC. The game is based on a fastapi backend with a React client. All player information was gained through a combination of kaggle datasets and webscraping. The goal of the game is to win all of your opponents cards by picking favourable statistics on your randomly dealt hand of cards. If your player's statistic is better for the given trait, you win your opponents top card.",
+    "imagePaths": ["/images/royalty-of-the-pitch-example.PNG"],
+    "technologies": ["Python", "FastAPI", "React"]
+  },
+  {
+    "projectName": "Chore Tracker",
+    "link": "https://github.com/J0ELh/Personal-Chore-Tracker-Project",
+    "affiliation": "University of British Columbia",
+    "technologies": ["Java"],
+    "imagePaths": ["/images/not-available.jpg"],
+    "description": "I created a chore tracker application in Java. This project focused on test-driven development using best design principles. Given a house with multiple people living in it, the app allowed to track and distribute chores throughout the household. An algorithm ensured that people got a good balance of easy and hard tasks so that nobody would end up with too much work."
+  },
+  {
+    "projectName": "2D Platformer",
+    "affiliation": "University of British Columbia",
+    "link": "https://www.youtube.com/watch?v=EDGmATVzSjM",
+    "imagePaths": ["/images/platformer.PNG"],
+    "technologies": ["Unity"],
+    "description": "Using the Unity game engine and C#, my friends and I created a platforming game inspired by super mario."
+  }
+]

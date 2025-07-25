@@ -67,11 +67,36 @@ const Project: React.FC<ProjectProps> = ({
       {/* ---------- title / affiliation ---------- */}
       <div className="flex flex-col sm:flex-row items-center justify-between">
         {link ? (
-          <Link href={link} passHref>
-            <h2 className="text-sm md:text-md lg:text-lg font-bold text-blue-500 mb-2 cursor-pointer hover:underline">
-              {projectName}
-            </h2>
-          </Link>
+          link.toLowerCase().endsWith(".pdf") ? (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center text-sm md:text-md lg:text-lg font-bold  mb-2 cursor-pointer"
+            >
+              <span className="text-gray-800 underline group-hover:text-blue-500 group-hover: transition-colors duration-300">
+                {projectName}
+              </span>
+              <img
+                src="/svgs/171454_link_icon.png"
+                alt="link icon"
+                className="ml-2 w-4 h-4 opacity-70 underline group-hover:opacity-100 "
+                style={{ display: "inline-block" }}
+              />
+            </a>
+          ) : (
+            <Link href={link} passHref className="group flex items-center">
+              <h2 className="text-sm md:text-md lg:text-lg font-bold underline mb-2 cursor-pointer text-gray-800 group-hover:text-blue-500 group-hover:underline transition-colors duration-300 flex items-center">
+                {projectName}
+                <img
+                  src="/svgs/171454_link_icon.png"
+                  alt="link icon"
+                  className="ml-2 w-4 h-4 opacity-70  group-hover:opacity-100 "
+                  style={{ display: "inline-block" }}
+                />
+              </h2>
+            </Link>
+          )
         ) : (
           <h2 className="text-sm md:text-md lg:text-lg font-bold text-gray-500 mb-2">
             {projectName}
@@ -154,7 +179,7 @@ const Project: React.FC<ProjectProps> = ({
               alt="Zoomed in"
               width={1600}
               height={1600}
-              className="object-contain max-w-full max-h-full rounded"
+              className="object-contain max-w-full max-h-full max-w-[600px] max-h-[80vh] rounded bg-gray-900"
               fetchPriority="low"
               loading="lazy"
               decoding="async"

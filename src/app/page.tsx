@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import { Linkedin, Github, Mail, Phone, LucideMapPinHouse } from "lucide-react"; // Adjust based on the actual export names if necessary
-import PageLink from "@/components/PageLink";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { DesktopHomepage } from "@/full_page_components/DesktopHomepage";
 import { MobileHomePage } from "@/full_page_components/MobileHomePage";
