@@ -1,7 +1,9 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import usePostInfo from "@/hooks/usePostInfoContext";
 import usePostInfoContext from "@/hooks/usePostInfoContext";
+import LazyImage from "@/components/LazyImage";
+import useImagePreloader from "@/hooks/useImagePreloader";
 
 type PostProps = {
   postName?: string;
@@ -29,6 +31,7 @@ const Post: React.FC<PostProps> = ({
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { previewLength, previewThreshold } = usePostInfoContext();
+  const { preloadNextBatch } = useImagePreloader(imagePaths, 2);
 
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
@@ -37,6 +40,7 @@ const Post: React.FC<PostProps> = ({
   const openOverlayAtIndex = (index: number) => {
     setCurrentIndex(index);
     setOverlayOpen(true);
+    preloadNextBatch(index, 3);
   };
 
   const closeOverlay = () => {
@@ -52,9 +56,9 @@ const Post: React.FC<PostProps> = ({
 
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setCurrentIndex((prevIndex) =>
-      prevIndex === imagePaths.length - 1 ? 0 : prevIndex + 1
-    );
+    const nextIndex = currentIndex === imagePaths.length - 1 ? 0 : currentIndex + 1;
+    setCurrentIndex(nextIndex);
+    preloadNextBatch(nextIndex, 2);
   };
 
   const handleOverlayClick = (
@@ -100,13 +104,10 @@ const Post: React.FC<PostProps> = ({
           onClick={() => openOverlayAtIndex(currentIndex)}
         >
           <div className="w-full h-full overflow-hidden rounded border shadow-md flex items-center justify-center">
-            <img
+            <LazyImage
               src={imagePaths[currentIndex]}
               alt={`Post Image`}
               className="object-cover w-full h-full"
-              fetchPriority="low"
-              loading="lazy"
-              decoding="async"
             />
           </div>
           {/* Navigation arrows */}

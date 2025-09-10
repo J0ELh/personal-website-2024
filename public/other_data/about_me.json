@@ -1,5 +1,43 @@
 [
   {
+    "postName": "Panorama Ridge Hike",
+    "date": "2025-08-25T10:00:00-08:00",
+    "location": "Garibaldi Provincial Park, BC",
+    "caption": "An incredible day hike to Panorama Ridge with breathtaking views of Garibaldi Lake and the surrounding mountains. Started on Sunday morning and finished the next day around 6pm. We chose to camp at Taylor Meadows which meant we had to do a lot of walking. We walked around 25km on Sunday and another 35-40km on Monday. Hardest hike I've ever done!",
+    "imagePaths": [
+      "/images/about-image-folders/panorama-ridge-august-25-2024/me.jpg",
+      "/images/about-image-folders/panorama-ridge-august-25-2024/initial-pic.jpg",
+      "/images/about-image-folders/panorama-ridge-august-25-2024/peak-breakfast.jpg",
+      "/images/about-image-folders/panorama-ridge-august-25-2024/stars.jpg"
+    ]
+  },
+  {
+    "postName": "3rd Intramural Championship",
+    "affiliation": "Limes FC",
+    "date": "2025-08-18T16:00:00-08:00",
+    "location": "UBC Fields",
+    "caption": "Won our 3rd intramural championship with Limes FC! An amazing season with the team, culminating in a hard-fought victory in the finals.",
+    "imagePaths": [
+      "/images/about-image-folders/limes-fc-championship-august-18-2024/champion-trophy.jpg"
+    ]
+  },
+  {
+    "postName": "RoboSub Competition",
+    "affiliation": "UBC Subbots",
+    "date": "2025-08-09T09:00:00-08:00",
+    "location": "Los Angeles, California",
+    "caption": "Competed in the international RoboSub competition with UBC Subbots. A week of intense testing, debugging, and late-night soldering sessions. Our autonomous underwater vehicle performed well in the pool tests, and we learned valuable lessons for next year's competition.",
+    "imagePaths": [
+      "/images/about-image-folders/subbots-la-competition-august-2024/daveman.jpg",
+      "/images/about-image-folders/subbots-la-competition-august-2024/underwater-picture.jpg",
+      "/images/about-image-folders/subbots-la-competition-august-2024/testing-setup.jpg",
+      "/images/about-image-folders/subbots-la-competition-august-2024/late-night-soldering.jpg",
+      "/images/about-image-folders/subbots-la-competition-august-2024/tv.jpg",
+      "/images/about-image-folders/subbots-la-competition-august-2024/our-station.jpg"
+    ],
+    "link": "https://www.subbots.ca/#/"
+  },
+  {
     "postName": "Pool Test",
     "affiliation": "UBC Subbots",
     "date": "2025-03-12T14:00:00-08:00",
@@ -41,9 +79,7 @@
     "date": "2025-04-09T13:37:27-08:00",
     "location": "Heritage Hall",
     "imagePaths": [
-      "/images/about-image-folders/ubc cs gala - april 9 2025/a453aeeb-60a0-470a-8778-941cd4e65a11.JPG",
-      "/images/about-image-folders/ubc cs gala - april 9 2025/bc8cf6d7-3509-470f-9491-a00727069129.JPG",
-      "/images/about-image-folders/ubc cs gala - april 9 2025/08488fb0-bcc7-4817-a62f-82ede7fde986.JPG"
+      "/images/about-image-folders/ubc cs gala - april 9 2025/bc8cf6d7-3509-470f-9491-a00727069129.JPG"
     ]
   }
 ]
