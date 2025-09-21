@@ -9,6 +9,7 @@ type ProjectProps = {
   technologies?: string[];
   link?: string;
   imagePaths?: string[];
+  media?: string[];
 };
 
 const technologyIcons: Record<string, string> = {
@@ -35,11 +36,27 @@ const Project: React.FC<ProjectProps> = ({
   technologies = [],
   link,
   imagePaths = [],
+  media = [],
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { previewLength, previewThreshold } = usePostInfoContext();
+
+  // Use media array if provided, otherwise fall back to imagePaths for backward compatibility
+  const mediaItems = media.length > 0 ? media : imagePaths;
+
+  // Helper function to extract YouTube video ID
+  const getYouTubeId = (url: string): string | null => {
+    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?v=)|(shorts\/))([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[8].length === 11) ? match[8] : null;
+  };
+
+  // Helper function to check if URL is a YouTube video
+  const isYouTubeVideo = (url: string): boolean => {
+    return url.includes('youtube.com') || url.includes('youtu.be');
+  };
 
   // const isProd = process.env.NODE_ENV === 'production';
   // const basePath = isProd ? '/personal-website-2024' : '';
@@ -47,16 +64,18 @@ const Project: React.FC<ProjectProps> = ({
   /* ---------- helpers ---------- */
   const toggleDescription = () => setIsExpanded((p) => !p);
   const openOverlayAtIndex = (i: number) => {
-    setCurrentIndex(i);
-    setOverlayOpen(true);
+    if (!isYouTubeVideo(mediaItems[i])) {
+      setCurrentIndex(i);
+      setOverlayOpen(true);
+    }
   };
   const handlePrevious = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setCurrentIndex((i) => (i === 0 ? imagePaths.length - 1 : i - 1));
+    setCurrentIndex((i) => (i === 0 ? mediaItems.length - 1 : i - 1));
   };
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setCurrentIndex((i) => (i === imagePaths.length - 1 ? 0 : i + 1));
+    setCurrentIndex((i) => (i === mediaItems.length - 1 ? 0 : i + 1));
   };
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if ((e.target as Element).id === "overlay") setOverlayOpen(false);
@@ -128,25 +147,38 @@ const Project: React.FC<ProjectProps> = ({
 
       {/* ---------- full‑width, centred thumbnail ---------- */}
       <div className="w-full flex justify-center mb-4">
-        {imagePaths.length > 0 && (
+        {mediaItems.length > 0 && (
           <div
             className="relative w-full aspect-square cursor-pointer max-w-[600px]"
             onClick={() => openOverlayAtIndex(currentIndex)}
           >
             {/* square thumbnail */}
             <div className="w-full h-full overflow-hidden rounded border shadow-md flex items-center justify-center">
-              <img
-                src={imagePaths[currentIndex]}
-                alt={`Project ${projectName} Image`}
-                className="object-cover w-full h-full"
-                fetchPriority="low"
-                loading="lazy"
-                decoding="async"
-              />
+              {isYouTubeVideo(mediaItems[currentIndex]) ? (
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${getYouTubeId(mediaItems[currentIndex])}`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              ) : (
+                <img
+                  src={mediaItems[currentIndex]}
+                  alt={`Project ${projectName} Image`}
+                  className="object-cover w-full h-full"
+                  fetchPriority="low"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
             </div>
 
             {/* nav arrows */}
-            {imagePaths.length > 1 && (
+            {mediaItems.length > 1 && (
               <>
                 <button
                   onClick={handlePrevious}
@@ -167,7 +199,7 @@ const Project: React.FC<ProjectProps> = ({
       </div>
 
       {/* ---------- zoom overlay ---------- */}
-      {overlayOpen && imagePaths.length > 0 && (
+      {overlayOpen && mediaItems.length > 0 && !isYouTubeVideo(mediaItems[currentIndex]) && (
         <div
           id="overlay"
           className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/80"
@@ -175,7 +207,7 @@ const Project: React.FC<ProjectProps> = ({
         >
           <div className="relative max-w-[90vw] max-h-[90vh]">
             <img
-              src={`${imagePaths[currentIndex]}`}
+              src={`${mediaItems[currentIndex]}`}
               alt="Zoomed in"
               width={1600}
               height={1600}
@@ -185,7 +217,7 @@ const Project: React.FC<ProjectProps> = ({
               decoding="async"
             />
 
-            {imagePaths.length > 1 && (
+            {mediaItems.length > 1 && (
               <>
                 <button
                   onClick={handlePrevious}

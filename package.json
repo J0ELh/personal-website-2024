@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && node -e \"require('fs').writeFileSync('./out/.nojekyll', '')\"",
-    "start": "next start",
+    "start": "npx serve@latest out -p 3000",
     "lint": "next lint",
     "export": "next build",
     "predeploy": "npm run export",

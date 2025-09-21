@@ -13,6 +13,7 @@ type PostProps = {
   location?: string;
   link?: string;
   imagePaths?: string[];
+  media?: string[];
 };
 
 const Post: React.FC<PostProps> = ({
@@ -23,6 +24,7 @@ const Post: React.FC<PostProps> = ({
   location,
   link,
   imagePaths = [],
+  media = [],
 }) => {
   // const isProd = process.env.NODE_ENV === 'production';
   // const basePath = isProd ? '/personal-website-2024' : '';
@@ -31,7 +33,23 @@ const Post: React.FC<PostProps> = ({
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { previewLength, previewThreshold } = usePostInfoContext();
-  const { preloadNextBatch } = useImagePreloader(imagePaths, 2);
+
+  // Use media array if provided, otherwise fall back to imagePaths for backward compatibility
+  const mediaItems = media.length > 0 ? media : imagePaths;
+  const imageOnlyItems = mediaItems.filter(item => !item.includes('youtube.com') && !item.includes('youtu.be'));
+  const { preloadNextBatch } = useImagePreloader(imageOnlyItems, 2);
+
+  // Helper function to extract YouTube video ID
+  const getYouTubeId = (url: string): string | null => {
+    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?v=)|(shorts\/))([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[8].length === 11) ? match[8] : null;
+  };
+
+  // Helper function to check if URL is a YouTube video
+  const isYouTubeVideo = (url: string): boolean => {
+    return url.includes('youtube.com') || url.includes('youtu.be');
+  };
 
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
@@ -50,15 +68,17 @@ const Post: React.FC<PostProps> = ({
   const handlePrevious = (e: React.MouseEvent) => {
     e.stopPropagation();
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? imagePaths.length - 1 : prevIndex - 1
+      prevIndex === 0 ? mediaItems.length - 1 : prevIndex - 1
     );
   };
 
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const nextIndex = currentIndex === imagePaths.length - 1 ? 0 : currentIndex + 1;
+    const nextIndex = currentIndex === mediaItems.length - 1 ? 0 : currentIndex + 1;
     setCurrentIndex(nextIndex);
-    preloadNextBatch(nextIndex, 2);
+    if (!isYouTubeVideo(mediaItems[nextIndex])) {
+      preloadNextBatch(nextIndex, 2);
+    }
   };
 
   const handleOverlayClick = (
@@ -97,21 +117,34 @@ const Post: React.FC<PostProps> = ({
         {location && <div className="mt-0">{location}</div>}
       </div>
 
-      {imagePaths.length > 0 && (
+      {mediaItems.length > 0 && (
         <div
           className="relative cursor-pointer w-full max-w-[600px] mx-auto"
           style={{ aspectRatio: "1 / 1" }}
-          onClick={() => openOverlayAtIndex(currentIndex)}
+          onClick={() => !isYouTubeVideo(mediaItems[currentIndex]) && openOverlayAtIndex(currentIndex)}
         >
           <div className="w-full h-full overflow-hidden rounded border shadow-md flex items-center justify-center">
-            <LazyImage
-              src={imagePaths[currentIndex]}
-              alt={`Post Image`}
-              className="object-cover w-full h-full"
-            />
+            {isYouTubeVideo(mediaItems[currentIndex]) ? (
+              <iframe
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${getYouTubeId(mediaItems[currentIndex])}`}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            ) : (
+              <LazyImage
+                src={mediaItems[currentIndex]}
+                alt={`Post Image`}
+                className="object-cover w-full h-full"
+              />
+            )}
           </div>
           {/* Navigation arrows */}
-          {imagePaths.length > 1 && (
+          {mediaItems.length > 1 && (
             <>
               <button
                 onClick={handlePrevious}
@@ -130,7 +163,7 @@ const Post: React.FC<PostProps> = ({
         </div>
       )}
 
-      {overlayOpen && imagePaths.length > 0 && (
+      {overlayOpen && mediaItems.length > 0 && !isYouTubeVideo(mediaItems[currentIndex]) && (
         <div
           id="overlay"
           className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/80"
@@ -138,14 +171,14 @@ const Post: React.FC<PostProps> = ({
         >
           <div className="relative max-w-[90vw] max-h-[90vh]">
             <img
-              src={`${imagePaths[currentIndex]}`}
+              src={`${mediaItems[currentIndex]}`}
               alt="Zoomed in"
               width={1600}
               height={1600}
               className="object-contain max-w-full max-h-full rounded"
             />
 
-            {imagePaths.length > 1 && (
+            {mediaItems.length > 1 && (
               <>
                 <button
                   onClick={handlePrevious}
