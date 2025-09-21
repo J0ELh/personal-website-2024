@@ -1,9 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Project from "../../components/project"; // We'll define this component next
 import { AwardFormat, RecommendationFormat } from "../types";
-import { Home } from "lucide-react";
-import HomeButton from "@/components/HomeButton";
 import Recommendation from "@/components/recommendation";
 import Award from "@/components/award";
 
@@ -32,24 +29,25 @@ const RecommendationsPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8 text-">
-      <h1 className="text-2xl sm:text-3xl  font-bold mb-4 text-center text-black">
-        Recommendations
-      </h1>
-      <div className="flex flex-col justify-center items-center">
-        {recommentations.map((recommentation, index) => (
-          <Recommendation key={index} {...recommentation} />
-        ))}
+    <div className="page-container">
+      <div className="content-container">
+        <h1 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
+          Recommendations
+        </h1>
+        <div className="flex flex-col justify-center items-center gap-6">
+          {recommentations.map((recommendation, index) => (
+            <Recommendation key={index} {...recommendation} />
+          ))}
+        </div>
+        <h1 className="text-3xl font-bold mb-8 mt-12 text-center bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
+          Awards
+        </h1>
+        <div className="flex flex-col justify-center items-center gap-6">
+          {awards.map((award, index) => (
+            <Award key={index} {...award} />
+          ))}
+        </div>
       </div>
-      <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-center text-black mt-5">
-        Awards
-      </h1>
-      <div className="flex flex-col justify-center items-center">
-        {awards.map((award, index) => (
-          <Award key={index} {...award} />
-        ))}
-      </div>
-      <HomeButton />
     </div>
   );
 };

@@ -82,7 +82,7 @@ const Project: React.FC<ProjectProps> = ({
   };
 
   return (
-    <div className="m-4 p-4 bg-white rounded-lg w-full md:w-[60vw] max-w-[600px]">
+    <div className="card p-6 w-full md:w-[60vw] max-w-[700px]">
       {/* ---------- title / affiliation ---------- */}
       <div className="flex flex-col sm:flex-row items-center justify-between">
         {link ? (
@@ -93,7 +93,7 @@ const Project: React.FC<ProjectProps> = ({
               rel="noopener noreferrer"
               className="group flex items-center text-sm md:text-md lg:text-lg font-bold  mb-2 cursor-pointer"
             >
-              <span className="text-gray-800 underline group-hover:text-blue-500 group-hover: transition-colors duration-300">
+              <span className="text-gray-800 dark:text-gray-200 underline group-hover:text-accent transition-colors duration-200">
                 {projectName}
               </span>
               <img
@@ -105,7 +105,7 @@ const Project: React.FC<ProjectProps> = ({
             </a>
           ) : (
             <Link href={link} passHref className="group flex items-center">
-              <h2 className="text-sm md:text-md lg:text-lg font-bold underline mb-2 cursor-pointer text-gray-800 group-hover:text-blue-500 group-hover:underline transition-colors duration-300 flex items-center">
+              <h2 className="text-sm md:text-md lg:text-lg font-bold underline mb-2 cursor-pointer text-gray-800 dark:text-gray-200 group-hover:text-accent transition-colors duration-200 flex items-center">
                 {projectName}
                 <img
                   src="/svgs/171454_link_icon.png"
@@ -117,18 +117,18 @@ const Project: React.FC<ProjectProps> = ({
             </Link>
           )
         ) : (
-          <h2 className="text-sm md:text-md lg:text-lg font-bold text-gray-500 mb-2">
+          <h2 className="text-sm md:text-md lg:text-lg font-bold text-gray-600 dark:text-gray-400 mb-2">
             {projectName}
           </h2>
         )}
-        <h3 className="text-xs md:text-sm lg:text-md text-blue-800">
+        <h3 className="text-xs md:text-sm lg:text-md text-accent dark:text-accent-light">
           {affiliation}
         </h3>
       </div>
 
       {/* ---------- tech badges ---------- */}
-      <div className="bg-gray-50 rounded-md p-1 mb-4">
-        <div className="flex flex-wrap ml-2">
+      <div className="bg-gray-50 dark:bg-neutral-800 rounded-lg p-2 mb-4">
+        <div className="flex flex-wrap">
           {technologies.map((tech) => (
             <div key={tech} className="relative h-6 w-6 m-1">
               <img
@@ -177,18 +177,22 @@ const Project: React.FC<ProjectProps> = ({
               )}
             </div>
 
-            {/* nav arrows */}
+            {/* nav arrows - position outside video area for YouTube */}
             {mediaItems.length > 1 && (
               <>
                 <button
                   onClick={handlePrevious}
-                  className="absolute top-1/2 left-0 -translate-y-1/2 p-2 sm:p-3 text-2xl bg-gray-400/60 rounded hover:bg-gray-400/80"
+                  className={`absolute top-1/2 -translate-y-1/2 p-2 sm:p-3 text-2xl bg-white/80 dark:bg-black/80 rounded-lg hover:bg-white/90 dark:hover:bg-black/90 shadow-lg transition-all duration-200 z-10 ${
+                    isYouTubeVideo(mediaItems[currentIndex]) ? '-left-12' : 'left-0'
+                  }`}
                 >
                   &#10094;
                 </button>
                 <button
                   onClick={handleNext}
-                  className="absolute top-1/2 right-0 -translate-y-1/2 p-2 sm:p-3 text-2xl bg-gray-400/60 rounded hover:bg-gray-400/80"
+                  className={`absolute top-1/2 -translate-y-1/2 p-2 sm:p-3 text-2xl bg-white/80 dark:bg-black/80 rounded-lg hover:bg-white/90 dark:hover:bg-black/90 shadow-lg transition-all duration-200 z-10 ${
+                    isYouTubeVideo(mediaItems[currentIndex]) ? '-right-12' : 'right-0'
+                  }`}
                 >
                   &#10095;
                 </button>
@@ -239,15 +243,15 @@ const Project: React.FC<ProjectProps> = ({
 
       {/* ---------- description & read‑more ---------- */}
       {isExpanded || description.length <= previewThreshold ? (
-        <p className="text-gray-900">{description}</p>
+        <p className="text-gray-700 dark:text-gray-300">{description}</p>
       ) : (
-        <p className="text-gray-900">{description.slice(0, previewLength)}…</p>
+        <p className="text-gray-700 dark:text-gray-300">{description.slice(0, previewLength)}…</p>
       )}
 
       {description.length > previewThreshold && (
         <button
           onClick={toggleDescription}
-          className="mt-2 text-blue-500 hover:text-blue-700"
+          className="mt-2 text-accent hover:text-accent-dark transition-colors duration-200"
         >
           {isExpanded ? "Read Less" : "Read More"}
         </button>

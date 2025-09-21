@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import Project from "../../components/project";
 import { ProjectFormat } from "../types";
-import HomeButton from "@/components/HomeButton";
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState<ProjectFormat[]>([]);
@@ -17,16 +16,17 @@ const ProjectsPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 sm:p-8">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-center text-black">
-        My Projects
-      </h1>
-      <div className="flex flex-col items-center">
-        {projects.map((project, index) => (
-          <Project key={index} {...project} />
-        ))}
+    <div className="page-container">
+      <div className="content-container">
+        <h1 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
+          My Projects
+        </h1>
+        <div className="flex flex-col items-center gap-6">
+          {projects.map((project, index) => (
+            <Project key={index} {...project} />
+          ))}
+        </div>
       </div>
-      <HomeButton />
     </div>
   );
 };

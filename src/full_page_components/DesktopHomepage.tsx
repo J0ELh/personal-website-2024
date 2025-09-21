@@ -1,109 +1,184 @@
 import Link from "next/link";
-import React, { useState } from "react";
-// import useDeploymentContext from '@/hooks/useDeploymentContext';
+import React from "react";
 import PageLink from "@/components/PageLink";
-import { Github, Linkedin, LucideMapPinHouse, Mail, Phone } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  LucideMapPinHouse,
+  Mail,
+  Phone,
+  FileText,
+} from "lucide-react";
 
 export const DesktopHomepage = () => {
-  // const basePath = useDeploymentContext();
-
   return (
-    <div className="min-h-screen bg-gray-200 p-8 flex text-black">
-      {/* ---------- left card ---------- */}
-      <aside
-        className="w-[280px] shrink-0 bg-gray-300/70  /* subtle tint   */
-                                rounded-xl shadow-lg p-6 flex flex-col"
-      >
-        <div className="flex justify-center mb-4">
-          <img
-            src={`/images/joel_pf_lower_res.jpg`}
-            alt="Profile Photo"
-            width={256}
-            height={256}
-            className="rounded-full object-cover"
-            fetchPriority="low"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
+    <div className="page-container p-8 flex items-center justify-center">
+      <div className="w-full max-w-6xl flex gap-8">
+        {/* Left Profile Card */}
+        <aside className="w-[320px] shrink-0">
+          <div className="card p-8 text-center">
+            <div className="flex justify-center mb-6">
+              <img
+                src={`/images/joel_pf_lower_res.jpg`}
+                alt="Profile Photo"
+                width={200}
+                height={200}
+                className="rounded-2xl object-cover shadow-lg"
+                fetchPriority="low"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
 
-        <h1 className="text-2xl font-bold mb-4 text-center">Joel Hempel</h1>
+            <h1 className="text-2xl font-bold mb-2">Joel Hempel</h1>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+              Passionate about Technology
+            </p>
 
-        <div id="contact" className="contact-info mt-8">
-          <h2 className="text-xl font-bold mb-2">Contact Information</h2>
-          <ul className="mb-2">
-            <li className="mb-2 flex flex-row gap-3">
-              <Linkedin />
+            {/* Contact Section */}
+            <div className="space-y-3 text-left">
+              <h2 className="text-lg font-semibold mb-3">Contact</h2>
+
               <a
                 href="https://www.linkedin.com/in/joelhempel"
-                className="text-blue-500 hover:text-blue-700  "
+                className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-neutral-800 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                LinkedIn
+                <Linkedin className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                <span className="text-sm">LinkedIn</span>
               </a>
-            </li>
-            <li className="mb-2 flex flex-row gap-3">
-              <Github />
+
               <a
                 href="https://github.com/J0ELh"
-                className="text-blue-500 hover:text-blue-700  "
+                className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-neutral-800 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                GitHub
+                <Github className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                <span className="text-sm">GitHub</span>
               </a>
-            </li>
-            <li className="mb-2 flex flex-row gap-3">
-              <Mail />
-              <span id="email" className="cursor-pointer hover:text-blue-700">
-                joelhempel35@gmail.com
-              </span>
-            </li>
-            <li className="mb-2 flex flex-row gap-3">
-              <Phone />
-              <span id="phone" className="cursor-pointer hover:text-blue-700">
-                (778) 988-3112
-              </span>
-            </li>
-            <li className="mb-2 flex flex-row gap-3">
-              <LucideMapPinHouse />
-              Vancouver, BC (Canada)
-            </li>
-          </ul>
-        </div>
-      </aside>
-      {/* ---------- vertical divider ---------- */}
-      <div className="mx-8 w-px bg-gray-400/70" /> {/* 1 px line + 2 rem gap */}
-      {/* right column */}
-      <div className="basis-[70%] pl-8">
-        <div className="content">
-          <h2 className="mt-3 mb-6 text-2xl text-blue-500 ">Hi there!</h2>
-          <h3 className="text-xl mb-6">Welcome to my personal website 👋</h3>
-          <p>
-            I&#39;m currently finishing up my Bachelors Degree at the University
-            of British Columbia, in the field of Computer Science. Here
-            you&#39;ll find a glimpse into my experience, as well as my personal
-            interests. Feel free to navigate through the sections below to learn
-            more about my journey and the work I&#39;m passionate about.
-          </p>
-        </div>
 
-        <nav className="flex justify-center items-center flex-col mt-10">
-          <a
-            href={`/other_data/Joel_Hempel_Resume.pdf`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-1/2 md:min-w-[320px] md:max-w-[450px] flex justify-center items-center text-lg m-2 p-3
-                            bg-gray-300 rounded transition-colors duration-300 ease-in-out
-                            hover:bg-gray-400"
-          >
-            Experience / Resume
-          </a>
+              <div className="flex items-center gap-3 p-2">
+                <Mail className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                <span
+                  className="text-sm link-hover"
+                  onClick={() =>
+                    navigator.clipboard.writeText("joelhempel35@gmail.com")
+                  }
+                >
+                  joelhempel35@gmail.com
+                </span>
+              </div>
 
-          <PageLink name="Projects" redirect="projects" />
-          <PageLink
-            name="Recommendations and Awards"
-            redirect="recommendations_awards"
-          />
-          <PageLink name="About Me" redirect="about" />
-        </nav>
+              <div className="flex items-center gap-3 p-2">
+                <Phone className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                <span className="text-sm">(778) 988-3112</span>
+              </div>
+
+              <div className="flex items-center gap-3 p-2">
+                <LucideMapPinHouse className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                <span className="text-sm">Vancouver, BC</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 flex flex-col gap-8">
+          {/* Welcome Section */}
+          <div className="card p-8">
+            <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
+              Welcome!
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+              I'm currently completing my Bachelor's Degree in Computer Science
+              at the University of British Columbia. This site showcases my
+              professional experience, personal projects, and interests. Feel
+              free to explore the sections below to learn more about my journey
+              and work.
+            </p>
+          </div>
+
+          {/* Navigation Grid */}
+          <nav className="grid grid-cols-2 gap-4">
+            <a
+              href={`/other_data/Joel_Hempel_Resume.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card p-6 group hover:border-accent/50 dark:hover:border-accent/30"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-semibold text-lg group-hover:text-accent transition-colors">
+                    Resume
+                  </h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                    View my experience
+                  </p>
+                </div>
+                <FileText className="w-6 h-6 text-gray-400 group-hover:text-accent transition-colors" />
+              </div>
+            </a>
+
+            <Link
+              href="/projects"
+              className="card p-6 group hover:border-accent/50 dark:hover:border-accent/30"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-semibold text-lg group-hover:text-accent transition-colors">
+                    Projects
+                  </h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                    See what I've built
+                  </p>
+                </div>
+                <div className="w-6 h-6 text-gray-400 group-hover:text-accent transition-colors">
+                  →
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              href="/recommendations_awards"
+              className="card p-6 group hover:border-accent/50 dark:hover:border-accent/30"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-semibold text-lg group-hover:text-accent transition-colors">
+                    Recognition
+                  </h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                    Awards & recommendations
+                  </p>
+                </div>
+                <div className="w-6 h-6 text-gray-400 group-hover:text-accent transition-colors">
+                  →
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              href="/about"
+              className="card p-6 group hover:border-accent/50 dark:hover:border-accent/30"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-semibold text-lg group-hover:text-accent transition-colors">
+                    About Me
+                  </h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                    Get to know me
+                  </p>
+                </div>
+                <div className="w-6 h-6 text-gray-400 group-hover:text-accent transition-colors">
+                  →
+                </div>
+              </div>
+            </Link>
+          </nav>
+        </main>
       </div>
     </div>
   );

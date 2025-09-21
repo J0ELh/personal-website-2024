@@ -90,29 +90,29 @@ const Post: React.FC<PostProps> = ({
   };
 
   return (
-    <div className="mx-auto my-6 p-3 sm:p-6 bg-white rounded-lg shadow-md w-full max-w-[600px]">
+    <div className="card p-6 w-full max-w-[700px] mx-auto my-6">
       {/* Header: Post title and affiliation side by side */}
       <div className="flex flex-row items-center justify-between">
         {link ? (
           <Link href={link} className="group flex-1">
-            <h2 className="text-md sm:text-xl font-bold text-gray-800 hover:text-blue-500 transition-colors duration-300 text-left">
+            <h2 className="text-md sm:text-xl font-bold text-gray-800 dark:text-gray-200 hover:text-accent transition-colors duration-200 text-left">
               {postName || ""}
             </h2>
           </Link>
         ) : (
-          <h2 className="flex-1 text-md sm:text-xl font-bold text-gray-800 text-left">
+          <h2 className="flex-1 text-md sm:text-xl font-bold text-gray-800 dark:text-gray-200 text-left">
             {postName || ""}
           </h2>
         )}
         {affiliation && (
-          <h3 className="ml-4 text-xs sm:text-base text-blue-800 text-center sm:text-left">
+          <h3 className="ml-4 text-xs sm:text-base text-accent dark:text-accent-light text-center sm:text-left">
             {affiliation}
           </h3>
         )}
       </div>
 
       {/* Meta Information: Date and Location */}
-      <div className="border-t mt-4 pt-3 flex flex-col sm:flex-row justify-between items-center text-xs md:text-sm text-gray-600">
+      <div className="border-t border-gray-200 dark:border-neutral-800 mt-4 pt-3 flex flex-col sm:flex-row justify-between items-center text-xs md:text-sm text-gray-500 dark:text-gray-400">
         <div className="mt-0">{date}</div>
         {location && <div className="mt-0">{location}</div>}
       </div>
@@ -143,18 +143,22 @@ const Post: React.FC<PostProps> = ({
               />
             )}
           </div>
-          {/* Navigation arrows */}
+          {/* Navigation arrows - position outside video area for YouTube */}
           {mediaItems.length > 1 && (
             <>
               <button
                 onClick={handlePrevious}
-                className="absolute top-1/2 left-0 -translate-y-1/2 p-2 sm:p-3 text-2xl bg-gray-400/60 rounded hover:bg-gray-400/80"
+                className={`absolute top-1/2 -translate-y-1/2 p-2 sm:p-3 text-2xl bg-white/80 dark:bg-black/80 rounded-lg hover:bg-white/90 dark:hover:bg-black/90 shadow-lg transition-all duration-200 z-10 ${
+                  isYouTubeVideo(mediaItems[currentIndex]) ? '-left-12' : 'left-0'
+                }`}
               >
                 &#10094;
               </button>
               <button
                 onClick={handleNext}
-                className="absolute top-1/2 right-0 -translate-y-1/2 p-2 sm:p-3 text-2xl bg-gray-400/60 rounded hover:bg-gray-400/80"
+                className={`absolute top-1/2 -translate-y-1/2 p-2 sm:p-3 text-2xl bg-white/80 dark:bg-black/80 rounded-lg hover:bg-white/90 dark:hover:bg-black/90 shadow-lg transition-all duration-200 z-10 ${
+                  isYouTubeVideo(mediaItems[currentIndex]) ? '-right-12' : 'right-0'
+                }`}
               >
                 &#10095;
               </button>
@@ -182,13 +186,13 @@ const Post: React.FC<PostProps> = ({
               <>
                 <button
                   onClick={handlePrevious}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 p-3 text-3xl bg-gray-400/60 rounded hover:bg-gray-400/80"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 p-3 text-3xl bg-white/80 dark:bg-black/80 rounded-lg hover:bg-white/90 dark:hover:bg-black/90 shadow-lg transition-all duration-200"
                 >
                   &#10094;
                 </button>
                 <button
                   onClick={handleNext}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 p-3 text-3xl bg-gray-400/60 rounded hover:bg-gray-400/80"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 p-3 text-3xl bg-white/80 dark:bg-black/80 rounded-lg hover:bg-white/90 dark:hover:bg-black/90 shadow-lg transition-all duration-200"
                 >
                   &#10095;
                 </button>
@@ -200,9 +204,9 @@ const Post: React.FC<PostProps> = ({
 
       {/* ---------- caption & read‑more ---------- */}
       {isExpanded || (caption && caption.length <= previewThreshold) ? (
-        <p className="text-gray-900">{caption}</p>
+        <p className="text-gray-700 dark:text-gray-300">{caption}</p>
       ) : caption ? (
-        <p className="text-gray-900">{caption.slice(0, previewLength)}…</p>
+        <p className="text-gray-700 dark:text-gray-300">{caption.slice(0, previewLength)}…</p>
       ) : (
         <div></div>
       )}
@@ -210,7 +214,7 @@ const Post: React.FC<PostProps> = ({
       {caption && caption.length > previewThreshold && (
         <button
           onClick={toggleDescription}
-          className="mt-2 text-blue-500 hover:text-blue-700"
+          className="mt-2 text-accent hover:text-accent-dark transition-colors duration-200"
         >
           {isExpanded ? "Read Less" : "Read More"}
         </button>

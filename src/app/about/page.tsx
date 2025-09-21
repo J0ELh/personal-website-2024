@@ -1,9 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Project from "../../components/project"; // We'll define this component next
-import { PostFormat, ProjectFormat } from "../types";
-import { Home } from "lucide-react";
-import HomeButton from "@/components/HomeButton";
+import { PostFormat } from "../types";
 import Post from "@/components/post";
 
 const AboutMePage = () => {
@@ -39,16 +36,17 @@ const AboutMePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8 text-">
-      <h1 className="text-2xl md:text-3xl font-bold mb-4 text-center text-black">
-        About Me
-      </h1>
-      <div className="flex flex-col justify-center items-center">
-        {posts.map((posts, index) => (
-          <Post key={index} {...posts} />
-        ))}
+    <div className="page-container">
+      <div className="content-container">
+        <h1 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
+          About Me
+        </h1>
+        <div className="flex flex-col justify-center items-center gap-6">
+          {posts.map((post, index) => (
+            <Post key={index} {...post} />
+          ))}
+        </div>
       </div>
-      <HomeButton />
     </div>
   );
 };
