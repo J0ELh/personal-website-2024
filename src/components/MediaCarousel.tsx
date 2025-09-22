@@ -24,7 +24,7 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({
     skipSnaps: false,
     dragFree: false,
     containScroll: 'trimSnaps',
-    draggable: allowSwipe,
+    watchDrag: allowSwipe,
   });
 
   const getYouTubeId = (url: string): string | null => {
