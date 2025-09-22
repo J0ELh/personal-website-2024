@@ -4,6 +4,7 @@ import usePostInfo from "@/hooks/usePostInfoContext";
 import usePostInfoContext from "@/hooks/usePostInfoContext";
 import LazyImage from "@/components/LazyImage";
 import useImagePreloader from "@/hooks/useImagePreloader";
+import MediaCarousel from "@/components/MediaCarousel";
 
 type PostProps = {
   postName?: string;
@@ -31,20 +32,13 @@ const Post: React.FC<PostProps> = ({
 
   const [isExpanded, setIsExpanded] = useState(false);
   const [overlayOpen, setOverlayOpen] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [overlayIndex, setOverlayIndex] = useState(0);
   const { previewLength, previewThreshold } = usePostInfoContext();
 
   // Use media array if provided, otherwise fall back to imagePaths for backward compatibility
   const mediaItems = media.length > 0 ? media : imagePaths;
   const imageOnlyItems = mediaItems.filter(item => !item.includes('youtube.com') && !item.includes('youtu.be'));
   const { preloadNextBatch } = useImagePreloader(imageOnlyItems, 2);
-
-  // Helper function to extract YouTube video ID
-  const getYouTubeId = (url: string): string | null => {
-    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?v=)|(shorts\/))([^#\&\?]*).*/;
-    const match = url.match(regExp);
-    return (match && match[8].length === 11) ? match[8] : null;
-  };
 
   // Helper function to check if URL is a YouTube video
   const isYouTubeVideo = (url: string): boolean => {
@@ -56,28 +50,10 @@ const Post: React.FC<PostProps> = ({
   };
 
   const openOverlayAtIndex = (index: number) => {
-    setCurrentIndex(index);
-    setOverlayOpen(true);
-    preloadNextBatch(index, 3);
-  };
-
-  const closeOverlay = () => {
-    setOverlayOpen(false);
-  };
-
-  const handlePrevious = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? mediaItems.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    const nextIndex = currentIndex === mediaItems.length - 1 ? 0 : currentIndex + 1;
-    setCurrentIndex(nextIndex);
-    if (!isYouTubeVideo(mediaItems[nextIndex])) {
-      preloadNextBatch(nextIndex, 2);
+    if (!isYouTubeVideo(mediaItems[index])) {
+      setOverlayIndex(index);
+      setOverlayOpen(true);
+      preloadNextBatch(index, 3);
     }
   };
 
@@ -85,7 +61,23 @@ const Post: React.FC<PostProps> = ({
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
     if (event.target instanceof Element && event.target.id === "overlay") {
-      closeOverlay();
+      setOverlayOpen(false);
+    }
+  };
+
+  const handleOverlayPrevious = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setOverlayIndex((prevIndex) =>
+      prevIndex === 0 ? mediaItems.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleOverlayNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const nextIndex = overlayIndex === mediaItems.length - 1 ? 0 : overlayIndex + 1;
+    setOverlayIndex(nextIndex);
+    if (!isYouTubeVideo(mediaItems[nextIndex])) {
+      preloadNextBatch(nextIndex, 2);
     }
   };
 
@@ -117,87 +109,100 @@ const Post: React.FC<PostProps> = ({
         {location && <div className="mt-0">{location}</div>}
       </div>
 
+      {/* Media Carousel */}
       {mediaItems.length > 0 && (
-        <div
-          className="relative cursor-pointer w-full max-w-[600px] mx-auto"
-          style={{ aspectRatio: "1 / 1" }}
-          onClick={() => !isYouTubeVideo(mediaItems[currentIndex]) && openOverlayAtIndex(currentIndex)}
-        >
-          <div className="w-full h-full overflow-hidden rounded border shadow-md flex items-center justify-center">
-            {isYouTubeVideo(mediaItems[currentIndex]) ? (
-              <iframe
-                width="100%"
-                height="100%"
-                src={`https://www.youtube.com/embed/${getYouTubeId(mediaItems[currentIndex])}`}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                className="w-full h-full"
-              />
-            ) : (
-              <LazyImage
-                src={mediaItems[currentIndex]}
-                alt={`Post Image`}
-                className="object-cover w-full h-full"
-              />
-            )}
-          </div>
-          {/* Navigation arrows - position outside video area for YouTube */}
-          {mediaItems.length > 1 && (
-            <>
-              <button
-                onClick={handlePrevious}
-                className={`absolute top-1/2 -translate-y-1/2 p-2 sm:p-3 text-2xl bg-white/80 dark:bg-black/80 rounded-lg hover:bg-white/90 dark:hover:bg-black/90 shadow-lg transition-all duration-200 z-10 ${
-                  isYouTubeVideo(mediaItems[currentIndex]) ? '-left-12' : 'left-0'
-                }`}
-              >
-                &#10094;
-              </button>
-              <button
-                onClick={handleNext}
-                className={`absolute top-1/2 -translate-y-1/2 p-2 sm:p-3 text-2xl bg-white/80 dark:bg-black/80 rounded-lg hover:bg-white/90 dark:hover:bg-black/90 shadow-lg transition-all duration-200 z-10 ${
-                  isYouTubeVideo(mediaItems[currentIndex]) ? '-right-12' : 'right-0'
-                }`}
-              >
-                &#10095;
-              </button>
-            </>
-          )}
+        <div className="mt-4">
+          <MediaCarousel
+            media={mediaItems}
+            onImageClick={openOverlayAtIndex}
+            className="max-w-[600px] mx-auto"
+            showDots={true}
+            allowSwipe={true}
+          />
         </div>
       )}
 
-      {overlayOpen && mediaItems.length > 0 && !isYouTubeVideo(mediaItems[currentIndex]) && (
+      {/* Zoom overlay */}
+      {overlayOpen && mediaItems.length > 0 && !isYouTubeVideo(mediaItems[overlayIndex]) && (
         <div
           id="overlay"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/80"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/90 backdrop-blur-sm"
           onClick={handleOverlayClick}
         >
           <div className="relative max-w-[90vw] max-h-[90vh]">
             <img
-              src={`${mediaItems[currentIndex]}`}
+              src={`${mediaItems[overlayIndex]}`}
               alt="Zoomed in"
               width={1600}
               height={1600}
               className="object-contain max-w-full max-h-full rounded"
+              fetchPriority="high"
+              loading="eager"
             />
 
             {mediaItems.length > 1 && (
               <>
                 <button
-                  onClick={handlePrevious}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 p-3 text-3xl bg-white/80 dark:bg-black/80 rounded-lg hover:bg-white/90 dark:hover:bg-black/90 shadow-lg transition-all duration-200"
+                  onClick={handleOverlayPrevious}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 dark:bg-black/90 rounded-full hover:bg-white dark:hover:bg-black shadow-lg transition-all duration-200"
+                  aria-label="Previous image"
                 >
-                  &#10094;
+                  <svg
+                    className="w-6 h-6 text-gray-800 dark:text-gray-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
                 </button>
                 <button
-                  onClick={handleNext}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 p-3 text-3xl bg-white/80 dark:bg-black/80 rounded-lg hover:bg-white/90 dark:hover:bg-black/90 shadow-lg transition-all duration-200"
+                  onClick={handleOverlayNext}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 dark:bg-black/90 rounded-full hover:bg-white dark:hover:bg-black shadow-lg transition-all duration-200"
+                  aria-label="Next image"
                 >
-                  &#10095;
+                  <svg
+                    className="w-6 h-6 text-gray-800 dark:text-gray-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
                 </button>
               </>
             )}
+
+            {/* Close button */}
+            <button
+              onClick={() => setOverlayOpen(false)}
+              className="absolute top-4 right-4 p-2 bg-white/90 dark:bg-black/90 rounded-full hover:bg-white dark:hover:bg-black shadow-lg transition-all duration-200"
+              aria-label="Close"
+            >
+              <svg
+                className="w-6 h-6 text-gray-800 dark:text-gray-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       )}

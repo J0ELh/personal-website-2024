@@ -9,7 +9,12 @@
       "Bash(Remove-Item C:Usersjoel-codepersonal-website-2024srcappaboutlayout.tsx)",
       "Bash(npm run deploy:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git push:*)",
+      "WebSearch",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []

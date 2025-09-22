@@ -92,7 +92,7 @@ export const DesktopHomepage = () => {
               Welcome!
             </h2>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-              I'm currently completing my Bachelor's Degree in Computer Science
+              I&apos;m currently completing my Bachelor&apos;s Degree in Computer Science
               at the University of British Columbia. This site showcases my
               professional experience, personal projects, and interests. Feel
               free to explore the sections below to learn more about my journey
@@ -131,7 +131,7 @@ export const DesktopHomepage = () => {
                     Projects
                   </h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                    See what I've built
+                    See what I&apos;ve built
                   </p>
                 </div>
                 <div className="w-6 h-6 text-gray-400 group-hover:text-accent transition-colors">

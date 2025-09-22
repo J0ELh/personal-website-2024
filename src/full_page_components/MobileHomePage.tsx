@@ -65,7 +65,7 @@ export const MobileHomePage = () => {
           Welcome!
         </h2>
         <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
-          I'm completing my Bachelor's in Computer Science at UBC.
+          I&apos;m completing my Bachelor&apos;s in Computer Science at UBC.
           Explore my projects, experience, and awards below.
         </p>
       </section>
