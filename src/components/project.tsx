@@ -9,7 +9,6 @@ type ProjectProps = {
   description: string;
   technologies?: string[];
   link?: string;
-  imagePaths?: string[];
   media?: string[];
 };
 
@@ -36,7 +35,6 @@ const Project: React.FC<ProjectProps> = ({
   description,
   technologies = [],
   link,
-  imagePaths = [],
   media = [],
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -44,8 +42,8 @@ const Project: React.FC<ProjectProps> = ({
   const [overlayIndex, setOverlayIndex] = useState(0);
   const { previewLength, previewThreshold } = usePostInfoContext();
 
-  // Use media array if provided, otherwise fall back to imagePaths for backward compatibility
-  const mediaItems = media.length > 0 ? media : imagePaths;
+  // Use media array directly
+  const mediaItems = media;
 
   // Helper function to check if URL is a YouTube video
   const isYouTubeVideo = (url: string): boolean => {

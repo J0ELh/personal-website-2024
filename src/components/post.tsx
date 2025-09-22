@@ -13,7 +13,6 @@ type PostProps = {
   date: string;
   location?: string;
   link?: string;
-  imagePaths?: string[];
   media?: string[];
 };
 
@@ -24,7 +23,6 @@ const Post: React.FC<PostProps> = ({
   date,
   location,
   link,
-  imagePaths = [],
   media = [],
 }) => {
   // const isProd = process.env.NODE_ENV === 'production';
@@ -35,8 +33,8 @@ const Post: React.FC<PostProps> = ({
   const [overlayIndex, setOverlayIndex] = useState(0);
   const { previewLength, previewThreshold } = usePostInfoContext();
 
-  // Use media array if provided, otherwise fall back to imagePaths for backward compatibility
-  const mediaItems = media.length > 0 ? media : imagePaths;
+  // Use media array directly
+  const mediaItems = media;
   const imageOnlyItems = mediaItems.filter(item => !item.includes('youtube.com') && !item.includes('youtu.be'));
   const { preloadNextBatch } = useImagePreloader(imageOnlyItems, 2);
 
