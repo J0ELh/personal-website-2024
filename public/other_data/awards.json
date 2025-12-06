@@ -1,25 +1,34 @@
 [
-    {
-        "affiliation": "Langara College",
-        "name": "Ernest E. Livesey Prize in Mathematics",
-        "description": "Ernest E. Livesey Memorial Prize in Mathematics is awarded to recognize the student or students who annually demonstrate the highest achievement in university transferable mathematics or statistics courses. The recipient must be nominated by a member of the Mathematics and Statistics Department, have completed at least two university-transferable mathematics or statistics courses and be enrolled in at least nine credits in the semester for which the student was nominated. They must also intend to continue with second year studies at Langara College or transfer to a BC university. Nominated students will receive an application from the department."
-    }, 
-    {
-        "affiliation":"Langara College",
-        "name": "LSU Faculty of Science Award",
-        "description": "LSU Faculty of Science Award is awarded to a student enrolled in the Faculty of Science Program with the highest CGPA."
-    },
-    {
-        "affiliation":"Richmond FC",
-        "name": "Scholarship"
-    },
-    {
-        "affiliation":"R. A. McMath Secondary School",
-        "name": "BC. Achievement Scholarship"
-    },
-    {
-        "affiliation":"R. A. McMath Secondary School",
-        "name": "Scholarship for Achievement in Modern Lanugages (Spanish)"
-    }
+  {
+    "affiliation": "University of British Columbia",
+    "name": "Bachelor of Science with Distinction",
+    "description": "Specialization in Computer Science. GPA: 4.2/4.33"
+  },
+  {
+    "affiliation": "Langara College",
+    "name": "Ernest E. Livesey Prize in Mathematics",
+    "description": "Ernest E. Livesey Memorial Prize in Mathematics is awarded to recognize the student or students who annually demonstrate the highest achievement in university transferable mathematics or statistics courses. The recipient must be nominated by a member of the Mathematics and Statistics Department, have completed at least two university-transferable mathematics or statistics courses and be enrolled in at least nine credits in the semester for which the student was nominated. They must also intend to continue with second year studies at Langara College or transfer to a BC university. Nominated students will receive an application from the department."
+  },
+  {
+    "affiliation": "Langara College",
+    "name": "Ernest E. Livesey Prize in Mathematics",
+    "description": "Ernest E. Livesey Memorial Prize in Mathematics is awarded to recognize the student or students who annually demonstrate the highest achievement in university transferable mathematics or statistics courses. The recipient must be nominated by a member of the Mathematics and Statistics Department, have completed at least two university-transferable mathematics or statistics courses and be enrolled in at least nine credits in the semester for which the student was nominated. They must also intend to continue with second year studies at Langara College or transfer to a BC university. Nominated students will receive an application from the department."
+  },
+  {
+    "affiliation": "Langara College",
+    "name": "LSU Faculty of Science Award",
+    "description": "LSU Faculty of Science Award is awarded to a student enrolled in the Faculty of Science Program with the highest CGPA."
+  },
+  {
+    "affiliation": "Richmond FC",
+    "name": "Scholarship"
+  },
+  {
+    "affiliation": "R. A. McMath Secondary School",
+    "name": "BC. Achievement Scholarship"
+  },
+  {
+    "affiliation": "R. A. McMath Secondary School",
+    "name": "Scholarship for Achievement in Modern Lanugages (Spanish)"
+  }
 ]
-  
